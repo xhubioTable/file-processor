@@ -16,7 +16,11 @@ export const START_COLUMN = 0
 const DEFAULT_SHEET_NAME = '__default__'
 
 // The importer will load only tables wich match the given keys
-const DEFAULT_TABLE_TYPE_KEYS = ['<DECISION_TABLE>', '<MATRIX_TABLE>']
+const DEFAULT_TABLE_TYPE_KEYS = [
+  '<DECISION_TABLE>',
+  '<MATRIX_TABLE>',
+  '<SPECIFICATION>',
+]
 
 /**
  * This registry stores all the available importer for a file

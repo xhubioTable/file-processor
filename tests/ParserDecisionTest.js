@@ -1,17 +1,18 @@
 import path from 'path'
 
+import { ImporterXlsx } from '@xhubioTable/importer-xlsx'
 import { ParserDecision } from '../lib/index'
 import { getLoggerMemory } from '@xhubioTable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
-const dataFile = path.join(fixturesDir, 'decision/descision_table.xls')
+const dataFile = path.join(fixturesDir, 'decision/decision_table.xls')
 const dataFileSingleRow = path.join(
   fixturesDir,
-  'decision/descission_table_singleRow.xls'
+  'decision/decision_table_singleRow.xls'
 )
 const dataFileSingleRowSections = path.join(
   fixturesDir,
-  'decision/descission_table_mini_singleRowSection.xls'
+  'decision/decision_table_mini_singleRowSection.xls'
 )
 
 const logger = getLoggerMemory()
@@ -64,49 +65,87 @@ describe('Importer Methods Tests', () => {
 })
 
 describe('Import decision table Tests', () => {
-  test('Test the instance name', () => {
-    const importer = new ParserDecision()
-    importer.load(dataFile)
+  test('Test the table content', async done => {
+    // just test some content elements
 
-    const table = importer.tables['CreatePerson']
     logger.clear()
 
-    // update the calculation
-    table.calculate()
+    const importer = new ImporterXlsx()
+    importer.loadFile(dataFile)
+    const parser = new ParserDecision({ logger })
+    const table = await parser.parse('CreatePerson', importer)
 
-    // Print the table json
-    // eslint-disable-next-line no-sync
-    // jsonfile.writeFileSync('./tests/volatile/table_createPerson.json', table, { spaces: 2 });
+    expect(table.name).toEqual('CreatePerson')
+    expect(table.sectionOrder.length).toBe(7)
+    const sectionId0 = table.sectionOrder[0]
+    const sectionId1 = table.sectionOrder[1]
+    const sectionId2 = table.sectionOrder[2]
+    // const sectionId3 = table.sectionOrder[3]
+    // const sectionId4 = table.sectionOrder[4]
+    // const sectionId5 = table.sectionOrder[5]
+    // const sectionId6 = table.sectionOrder[6]
 
-    // validation test
-    logger.clear()
-    const issues = table.validate()
-
-    issues.forEach(issue => {
-      delete issue.section
-      delete issue.testcase
+    expect(table.sections[sectionId0]).toMatchObject({
+      comments: {},
+      mandatory: false,
+      multiInstancesAllowed: true,
+      multiple: true,
+      name: 'Execute',
+      others: {},
+      sectionType: 'MultiRowSection',
     })
 
-    // console.log('###################################');
-    // console.log(JSON.stringify(issues, null, 2))
-    // console.log('###################################');
+    expect(table.sections[sectionId1]).toMatchObject({
+      comments: {},
+      mandatory: false,
+      multiInstancesAllowed: true,
+      multiple: true,
+      name: 'Group',
+      others: {},
+      sectionType: 'MultiRowSection',
+    })
 
-    expect(1).toEqual(1)
+    const section2 = table.sections[sectionId2]
+    const se2DataRow1 = section2.dataRows[0]
+    const se2HeaderRow = section2.headerRow
+
+    expect(section2).toMatchObject({
+      mandatory: true,
+      multiInstancesAllowed: true,
+      multiple: true,
+      name: 'Secondary data',
+      sectionType: 'FieldSection',
+      tdgMandatory: false,
+    })
+
+    const subSection = section2.subSections[se2DataRow1]
+    expect(subSection).toMatchObject({
+      comments: {},
+      dataRows: [],
+      equivalenceClasses: {},
+      headerRow: se2DataRow1,
+      mandatory: true,
+      multiInstancesAllowed: true,
+      multiple: true,
+      name: 'person',
+      parent: se2HeaderRow,
+      sectionType: 'FieldSubSection',
+      tdgMandatory: false,
+      tdgs: {},
+    })
+
+    done()
   })
 })
 
 describe('Import decision table with single row sections', () => {
-  test('xxxx', () => {
+  test('xxxx', async done => {
     logger.clear()
-    const importer = new ParserDecision()
 
-    try {
-      importer.load(dataFileSingleRow)
-    } catch (e) {
-      console.log(e)
-      console.log(logger.entries)
-    }
-    const table = importer.tables['CreatePerson_mini']
+    const importer = new ImporterXlsx()
+    importer.loadFile(dataFileSingleRow)
+    const parser = new ParserDecision({ logger })
+    const table = await parser.parse('CreatePerson_mini', importer)
 
     // update the calculation
     table.calculate()
@@ -130,21 +169,18 @@ describe('Import decision table with single row sections', () => {
     // console.log('###################################');
 
     expect(1).toEqual(1)
+    done()
   })
 })
 
-test.only('import single row sections', () => {
+test('import single row sections', async done => {
   logger.clear()
-  const importer = new ParserDecision()
 
-  try {
-    importer.load(dataFileSingleRowSections)
-  } catch (e) {
-    console.log(e)
-    console.log(logger.entries)
-  }
-  const table = importer.tables['CreatePerson_mini']
-  debugger
+  const importer = new ImporterXlsx()
+  importer.loadFile(dataFileSingleRowSections)
+  const parser = new ParserDecision({ logger })
+  const table = await parser.parse('CreatePerson_mini', importer)
+
   // update the calculation
   table.calculate()
   // Print the table json
@@ -161,4 +197,5 @@ test.only('import single row sections', () => {
   logger.clear()
 
   expect(1).toEqual(1)
+  done()
 })

@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@xhubioTable/logger": "0.0.1",
-    "@xhubioTable/model-decision": "^0.0.1",
+    "@xhubioTable/model-decision": "0.0.2",
     "@xhubioTable/model-matrix": "0.0.3",
     "uuid": "3.3.2"
   }

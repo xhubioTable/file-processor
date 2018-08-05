@@ -1,5 +1,3 @@
-'use strict'
-
 import path from 'path'
 
 import { ImporterXlsx } from '@xhubioTable/importer-xlsx'
@@ -13,7 +11,7 @@ const logger = getLoggerMemory()
 logger.clear()
 logger.writeConsole = false
 
-test.only('Test action_on_person table: load ', async done => {
+test('Test action_on_person table: load ', async done => {
   const importer = new ImporterXlsx()
   importer.loadFile(filename)
   const parser = new ParserMatrix({ logger })
