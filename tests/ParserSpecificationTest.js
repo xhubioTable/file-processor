@@ -28,7 +28,10 @@ describe('Import specification table', async () => {
 
   it('Specification_mini sheet', async done => {
     logger.clear()
-    const model = await parser.parse('Specification_mini', importer)
+    const model = await parser.parseSpecification(
+      'Specification_mini',
+      importer
+    )
     expect(model).toEqual(MINI_SPEC)
     done()
   })

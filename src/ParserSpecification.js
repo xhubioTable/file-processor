@@ -1,5 +1,6 @@
 import assert from 'assert'
 import ParserBase from './ParserBase'
+import ParserSpecificationConverter from './ParserSpecificationConverter'
 
 import { START_ROW, START_COLUMN } from './ParserConstants'
 import {
@@ -9,75 +10,19 @@ import {
 } from './ParserSpecificationConstants'
 
 export default class ImporterSpecification extends ParserBase {
-  /**
-   * Parses a single Spreadsheet
-   * @param sheetName {string} The name of the sheet
-   * @param importer {object} The importer
-   * @return specification {object} The created specification model for the sheet
-   */
   async parse(sheetName, importer) {
     try {
-      await this.logger.debug(`parseExcelSheet`)
-      assert.ok(sheetName, 'No sheet name given')
-      assert.ok(importer, 'No importer given')
-
-      const specification = new SpecificationModel({ name: sheetName })
-
-      const sheetEndRow = this.getEndRow(importer, sheetName)
-      const sheetEndColumn = this.getEndColumn(importer, sheetName)
-
-      // get the sections and validate that all existing
-      const { severityStartRow, ruleStartRow } = await this.checkSheetRows(
+      const converter = new ParserSpecificationConverter()
+      const specificationModel = await this.parseSpecification(
         sheetName,
-        importer,
-        sheetEndRow
+        importer
       )
-
-      if (severityStartRow === 0 || ruleStartRow === 0) {
-        // furher parsing possible
-        return
+      if (
+        specificationModel !== undefined &&
+        this.logger.entries.error.length === 0
+      ) {
+        return converter.convert(specificationModel)
       }
-      // console.log(`parseExcelSheet: severityStartRow=${severityStartRow}`);
-      // console.log(`parseExcelSheet: ruleStartRow=${ruleStartRow}`);
-
-      const fields = await this.parseFields({
-        sheetName,
-        importer,
-        severityStartRow,
-        ruleStartRow,
-        sheetEndColumn,
-      })
-      const rules = await this.parseRules({
-        sheetName,
-        importer,
-        ruleStartRow,
-        endRow: sheetEndRow,
-      })
-      const severities = await this.parseSeverities({
-        sheetName,
-        importer,
-        severityStartRow,
-        ruleStartRow,
-        sheetEndColumn,
-      })
-
-      await this.checkForUnusedRules({
-        sheetName,
-        importer,
-        severityStartRow,
-        sheetEndColumn,
-        rules,
-      })
-
-      specification.fieldOrder = fields.fieldOrder
-      specification.fields = fields.fields
-      specification.rules = rules
-
-      severities.forEach(name => {
-        specification.severities.push(name)
-      })
-
-      return specification
     } catch (e) {
       await this.logger.error({
         message: e.message,
@@ -85,6 +30,76 @@ export default class ImporterSpecification extends ParserBase {
         sheet: sheetName,
       })
     }
+  }
+
+  /**
+   * Parses a single Spreadsheet
+   * @param sheetName {string} The name of the sheet
+   * @param importer {object} The importer
+   * @return specification {object} The created specification model for the sheet
+   */
+  async parseSpecification(sheetName, importer) {
+    await this.logger.debug(`parseExcelSheet`)
+    assert.ok(sheetName, 'No sheet name given')
+    assert.ok(importer, 'No importer given')
+
+    const specification = new SpecificationModel({ name: sheetName })
+
+    const sheetEndRow = this.getEndRow(importer, sheetName)
+    const sheetEndColumn = this.getEndColumn(importer, sheetName)
+
+    // get the sections and validate that all existing
+    const { severityStartRow, ruleStartRow } = await this.checkSheetRows(
+      sheetName,
+      importer,
+      sheetEndRow
+    )
+
+    if (severityStartRow === 0 || ruleStartRow === 0) {
+      // furher parsing possible
+      return
+    }
+    // console.log(`parseExcelSheet: severityStartRow=${severityStartRow}`);
+    // console.log(`parseExcelSheet: ruleStartRow=${ruleStartRow}`);
+
+    const fields = await this.parseFields({
+      sheetName,
+      importer,
+      severityStartRow,
+      ruleStartRow,
+      sheetEndColumn,
+    })
+    const rules = await this.parseRules({
+      sheetName,
+      importer,
+      ruleStartRow,
+      endRow: sheetEndRow,
+    })
+    const severities = await this.parseSeverities({
+      sheetName,
+      importer,
+      severityStartRow,
+      ruleStartRow,
+      sheetEndColumn,
+    })
+
+    await this.checkForUnusedRules({
+      sheetName,
+      importer,
+      severityStartRow,
+      sheetEndColumn,
+      rules,
+    })
+
+    specification.fieldOrder = fields.fieldOrder
+    specification.fields = fields.fields
+    specification.rules = rules
+
+    severities.forEach(name => {
+      specification.severities.push(name)
+    })
+
+    return specification
   }
 
   /**
