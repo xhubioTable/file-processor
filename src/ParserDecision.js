@@ -90,7 +90,7 @@ export default class ParserDecision extends ParserBase {
         row: startRow,
         sheet: sheetName,
       })
-      sectionHandler.apply(this, [
+      await sectionHandler.apply(this, [
         {
           table,
           sheetName,
@@ -252,7 +252,7 @@ export default class ParserDecision extends ParserBase {
    * @param startRow {number} The row the section begins
    * @param endRow {number} The row the next section begins
    */
-  handleMultiRowSection(opts) {
+  async handleMultiRowSection(opts) {
     const { table, sheetName, importer, sectionName, startRow, endRow } = opts
 
     // create new section
@@ -283,7 +283,7 @@ export default class ParserDecision extends ParserBase {
    * @param table {object} The table to store the current sheet data
    * @param sectionName {string} The name of this section
    */
-  handleMultiplicitySection(opts) {
+  async handleMultiplicitySection(opts) {
     const { table, sheetName, importer, sectionName, startRow } = opts
     const sectionDefinition = table.addNewMultiplicitySection(sectionName)
     this._readTestcaseValues(
@@ -300,7 +300,7 @@ export default class ParserDecision extends ParserBase {
    * @param table {object} The table to store the current sheet data
    * @param sectionName {string} The name of this section
    */
-  handleExecuteSection(opts) {
+  async handleExecuteSection(opts) {
     const { table, sheetName, importer, sectionName, startRow } = opts
     const sectionDefinition = table.addNewExecuteSection(sectionName)
     this._readTestcaseValues(
@@ -317,7 +317,7 @@ export default class ParserDecision extends ParserBase {
    * @param table {object} The table to store the current sheet data
    * @param sectionName {string} The name of this section
    */
-  handleSummarySection(opts) {
+  async handleSummarySection(opts) {
     const { table, sectionName } = opts
     table.addNewSummarySection(sectionName)
   }
@@ -331,14 +331,13 @@ export default class ParserDecision extends ParserBase {
    * @param startRow {number} The row the section begins
    * @param endRow {number} The row the next section begins
    */
-  handleFieldSection(opts) {
+  async handleFieldSection(opts) {
     const { table, sheetName, importer, sectionName, startRow, endRow } = opts
 
     // first add the fieldSection itself
     const fieldSectionDefinition = table.addNewFieldSection(sectionName)
 
     // now add the subSections
-
     let currentRow = startRow + 1
     do {
       // get the ranges of one subSection
@@ -346,7 +345,7 @@ export default class ParserDecision extends ParserBase {
         startRow: fieldStartRow,
         endRow: fieldEndRow,
         fieldName,
-      } = this.getNextSubSection(sheetName, importer, currentRow, endRow)
+      } = await this.getNextSubSection(sheetName, importer, currentRow, endRow)
 
       // create a new subSection
       const subSectionDefinition = fieldSectionDefinition.createNewField(

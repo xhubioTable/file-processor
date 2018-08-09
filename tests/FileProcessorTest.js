@@ -2,7 +2,7 @@ import path from 'path'
 import DummyParser from './DummyParser'
 import { ImporterXlsx } from '@xhubioTable/importer-xlsx'
 
-import { FileProcessor } from '../lib/FileProcessor'
+import { FileProcessor } from '../lib/index'
 import { getLoggerMemory } from '@xhubioTable/logger'
 
 const LOGGER = getLoggerMemory()

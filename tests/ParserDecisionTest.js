@@ -6,6 +6,7 @@ import { getLoggerMemory } from '@xhubioTable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
 const dataFile = path.join(fixturesDir, 'decision/decision_table.xls')
+// const dataFileMini = path.join(fixturesDir, 'decision/decision_table_mini.xls')
 const dataFileSingleRow = path.join(
   fixturesDir,
   'decision/decision_table_singleRow.xls'
@@ -119,6 +120,10 @@ describe('Import decision table Tests', () => {
     })
 
     const subSection = section2.subSections[se2DataRow1]
+    expect(subSection.dataRows.length).toBe(2)
+    subSection.dataRows = []
+    expect(Object.keys(subSection.equivalenceClasses).length).toBe(2)
+    subSection.equivalenceClasses = {}
     expect(subSection).toMatchObject({
       comments: {},
       dataRows: [],
@@ -136,6 +141,20 @@ describe('Import decision table Tests', () => {
 
     done()
   })
+
+  // test('Test the table content', async done => {
+  //   // just test some content elements
+  //
+  //   logger.clear()
+  //   const importer = new ImporterXlsx()
+  //   importer.loadFile(dataFileMini)
+  //   const parser = new ParserDecision({ logger })
+  //   const table = await parser.parse('CreatePerson_mini', importer)
+  //
+  //   expect(table).toEqual({})
+  //
+  //   done()
+  // })
 })
 
 describe('Import decision table with single row sections', () => {

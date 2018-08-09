@@ -26,7 +26,7 @@ const DEFAULT_TABLE_TYPE_KEYS = [
  * This registry stores all the available importer for a file
  * extension
  */
-export class FileProcessor {
+export default class FileProcessor {
   constructor(opts = {}) {
     this.logger = opts.logger || getLoggerMemory()
 
