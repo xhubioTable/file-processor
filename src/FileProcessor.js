@@ -61,6 +61,13 @@ export class FileProcessor {
   }
 
   /**
+   * Delets all the loaded tables
+   */
+  clearTables() {
+    this._tables = new Map()
+  }
+
+  /**
    * Loads a list of files
    * @param fileNames {string|array} The file(s) to open
    */
