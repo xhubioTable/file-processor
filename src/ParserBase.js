@@ -1,6 +1,11 @@
 import { getLoggerMemory } from '@xhubioTable/logger'
 
-import { START_ROW, START_COLUMN, KEY_TABLE_END } from './ParserConstants'
+import {
+  START_ROW,
+  START_COLUMN,
+  KEY_TABLE_END,
+  MAX_EMPTY_LINES,
+} from './ParserConstants'
 
 export default class ParserBase {
   /**
@@ -33,7 +38,7 @@ export default class ParserBase {
    * @param maxEmpty {integer} The maximum of empty lines which will be ignored
    * @return endRow {number} The last row of the table
    */
-  getEndRow(importer, sheetName, maxEmpty = 20) {
+  getEndRow(importer, sheetName, maxEmpty = MAX_EMPTY_LINES) {
     let row = this.startRow + 1
     let emptyLines = 0
     let endRow = 0
