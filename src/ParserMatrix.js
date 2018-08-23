@@ -1,7 +1,7 @@
 import assert from 'assert'
 import ParserBase from './ParserBase'
 
-import { TableMatrix } from '@xhubioTable/model-matrix'
+import { TableMatrix } from '@xhubiotable/model-matrix'
 
 import {
   START_COLUMN_DATA,

@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import { TableDecision } from '@xhubioTable/model-decision'
+import { TableDecision } from '@xhubiotable/model-decision'
 
 /**
  * Converts a specification object into a decision table model.

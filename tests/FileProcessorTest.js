@@ -1,9 +1,9 @@
 import path from 'path'
 import DummyParser from './DummyParser'
-import { ImporterXlsx } from '@xhubioTable/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 
 import { FileProcessor } from '../lib/index'
-import { getLoggerMemory } from '@xhubioTable/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 const LOGGER = getLoggerMemory()
 

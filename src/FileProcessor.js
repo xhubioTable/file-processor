@@ -1,7 +1,7 @@
 import assert from 'assert'
 import path from 'path'
 
-import { getLoggerMemory } from '@xhubioTable/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 // The key used to identify the end column and end row
 export const TABLE_END_KEY = '<END>'

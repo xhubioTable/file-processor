@@ -1,18 +1,21 @@
 {
-  "name": "@xhubioTable/file-processor",
-  "version": "0.0.5",
+  "name": "@xhubiotable/file-processor",
+  "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "decision-table"
   ],
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xhubioTable/fileprocessor.git"
+    "url": "https://github.com/xhubiotable/fileprocessor.git"
   },
   "bugs": {
-    "url": "https://github.com/xhubioTable/fileprocessor/issues"
+    "url": "https://github.com/xhubiotable/fileprocessor/issues"
   },
-  "homepage": "https://github.com/xhubioTable/fileprocessor#readme",
+  "homepage": "https://github.com/xhubiotable/fileprocessor#readme",
   "scripts": {
     "build": "npm run src_format && npm run src_lint && babel src -d lib",
     "src_lint": "eslint src tests",
@@ -30,7 +33,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@xhubioTable/importer-xlsx": "^0.0.6",
+    "@xhubiotable/importer-xlsx": "1.0.0",
     "assert": "1.4.1",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
@@ -54,9 +57,9 @@
     "semantic-release": "15.9.8"
   },
   "dependencies": {
-    "@xhubioTable/logger": "0.0.1",
-    "@xhubioTable/model-decision": "0.0.5",
-    "@xhubioTable/model-matrix": "0.0.4",
+    "@xhubiotable/logger": "1.0.1",
+    "@xhubiotable/model-decision": "1.0.0",
+    "@xhubiotable/model-matrix": "1.0.0",
     "uuid": "3.3.2"
   }
 }

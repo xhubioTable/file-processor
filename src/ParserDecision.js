@@ -1,7 +1,7 @@
 import assert from 'assert'
 import ParserBase from './ParserBase'
 
-import { TableDecision } from '@xhubioTable/model-decision'
+import { TableDecision } from '@xhubiotable/model-decision'
 
 import {
   START_COLUMN_TESTCASE,
