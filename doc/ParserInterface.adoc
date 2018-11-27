@@ -1,0 +1,17 @@
+== ParserInterface
+For each table type a specific parser is needed. All the Parser
+must implement this interface.
+
+
+=== Functions
+
+[source, js]
+----
+/**
+ * Parser the sheet with the given name
+ * @param sheetName {string} The name of the sheet
+ * @param importer {object} The importer
+ * @return tableModel {object} The created table model
+ */
+async parse(sheetName, importer) {}
+----

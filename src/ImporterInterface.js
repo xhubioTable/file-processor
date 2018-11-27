@@ -5,14 +5,21 @@
 
 export class ImporterInterface {
   /**
-   * Opens the Spreadsheet and loads it
+   * Opens a file and loads it. This could be spreadsheet or whatever
+   * file.
    * @param fileName {string} The file to open
    */
   // eslint-disable-next-line no-unused-vars
   async loadFile(fileName) {}
 
   /**
-   * Returns the Cell value from a given sheet
+   * Returns all the loaded sheet names
+   * @return sheets {array} A list of sheet names
+   */
+  sheetNames() {}
+
+  /**
+   * Returns the Cell value from the sheet with the given name
    * @param sheetName {string} The name of the sheet
    * @param column {number} The column number start with '0'
    * @param row {number} The row number start with '0'
@@ -20,12 +27,6 @@ export class ImporterInterface {
    */
   // eslint-disable-next-line no-unused-vars
   cellValue(sheetName, column, row) {}
-
-  /**
-   * Returns a list of sheet names
-   * @return sheets {array} A list of sheet names
-   */
-  sheetNames() {}
 
   /**
    * Free some memory
