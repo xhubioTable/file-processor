@@ -368,7 +368,7 @@ export default class ParserSpecificationConverter {
     assert(specification)
     assert(table)
 
-    const section = table.addNewMultiRowSection('Execute')
+    const section = table.addNewMultiRowSection('Severity')
 
     specification.severities.forEach(name => {
       const rowId = section.createNewRow()

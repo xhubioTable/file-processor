@@ -6,6 +6,7 @@ import { getLoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
 const dataFile = path.join(fixturesDir, 'decision/decision_table.xls')
+const dataFileDoubleField = path.join(fixturesDir, 'decision/double_field.xlsx')
 // const dataFileMini = path.join(fixturesDir, 'decision/decision_table_mini.xls')
 const dataFileSingleRow = path.join(
   fixturesDir,
@@ -142,19 +143,29 @@ describe('Import decision table Tests', () => {
     done()
   })
 
-  // test('Test the table content', async done => {
-  //   // just test some content elements
-  //
-  //   logger.clear()
-  //   const importer = new ImporterXlsx()
-  //   importer.loadFile(dataFileMini)
-  //   const parser = new ParserDecision({ logger })
-  //   const table = await parser.parse('CreatePerson_mini', importer)
-  //
-  //   expect(table).toEqual({})
-  //
-  //   done()
-  // })
+  test('Test double field name', async done => {
+    logger.clear()
+
+    const importer = new ImporterXlsx()
+    importer.loadFile(dataFileDoubleField)
+    const parser = new ParserDecision({ logger })
+    await parser.parse('sheet1', importer)
+
+    const logs = logger.entries.error
+    delete logs[0].time
+    expect(logs).toEqual([
+      {
+        column: 1,
+        function: 'handleFieldSection',
+        level: 'error',
+        message:
+          "Double FieldSubSection name 'friend email' in section 'Primary data' in table 'sheet1'",
+        row: 14,
+      },
+    ])
+
+    done()
+  })
 })
 
 describe('Import decision table with single row sections', () => {

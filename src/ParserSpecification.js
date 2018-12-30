@@ -26,8 +26,9 @@ export default class ImporterSpecification extends ParserBase {
     } catch (e) {
       await this.logger.error({
         message: e.message,
-        function: 'parseExcelSheet',
+        function: 'parse',
         sheet: sheetName,
+        stack: e.stack,
       })
     }
   }
@@ -39,7 +40,7 @@ export default class ImporterSpecification extends ParserBase {
    * @return specification {object} The created specification model for the sheet
    */
   async parseSpecification(sheetName, importer) {
-    await this.logger.debug(`parseExcelSheet`)
+    await this.logger.debug(`parseSpecification`)
     assert.ok(sheetName, 'No sheet name given')
     assert.ok(importer, 'No importer given')
 
@@ -59,8 +60,8 @@ export default class ImporterSpecification extends ParserBase {
       // furher parsing possible
       return
     }
-    // console.log(`parseExcelSheet: severityStartRow=${severityStartRow}`);
-    // console.log(`parseExcelSheet: ruleStartRow=${ruleStartRow}`);
+    // console.log(`parseSpecification: severityStartRow=${severityStartRow}`);
+    // console.log(`parseSpecification: ruleStartRow=${ruleStartRow}`);
 
     const fields = await this.parseFields({
       sheetName,
@@ -196,7 +197,7 @@ export default class ImporterSpecification extends ParserBase {
      * @return severity {string} The severity for this field
      */
     async function getSeverity(column) {
-      // console.log(`parseExcelSheet/getSeverity: getSeverity for column=${column}`);
+      // console.log(`parseFields/getSeverity: getSeverity for column=${column}`);
 
       let severity
       for (let i = severityStartRow + 1; i < ruleStartRow; i++) {
@@ -231,7 +232,7 @@ export default class ImporterSpecification extends ParserBase {
      * @return field {object} The field object
      */
     async function getField(row) {
-      // console.log(`parseExcelSheet/getField: getField for row=${row}`);
+      // console.log(`parseFields/getField: getField for row=${row}`);
 
       const name = importer.cellValue(sheetName, START_COLUMN, row)
       const fieldNameInternal = importer.cellValue(

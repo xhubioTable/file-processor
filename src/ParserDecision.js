@@ -347,6 +347,18 @@ export default class ParserDecision extends ParserBase {
         fieldName,
       } = await this.getNextSubSection(sheetName, importer, currentRow, endRow)
 
+      const key = `FieldSubSection_${fieldName}`
+      if (table.sectionNames.has(key)) {
+        await this.logger.error({
+          message: `Double FieldSubSection name '${fieldName}' in section '${sectionName}' in table '${sheetName}'`,
+          function: 'handleFieldSection',
+          row: currentRow + 1,
+          column: COLUMN_TYPE,
+        })
+      } else {
+        table.sectionNames.add(key)
+      }
+
       // create a new subSection
       const subSectionDefinition = fieldSectionDefinition.createNewField(
         fieldName

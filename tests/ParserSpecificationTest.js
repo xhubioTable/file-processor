@@ -239,9 +239,11 @@ describe('Import specification table', async () => {
 
     expect(errors.length).toEqual(1)
     delete errors[0].time
+    delete errors[0].stack
+
     expect(errors).toEqual([
       {
-        function: 'parseExcelSheet',
+        function: 'parse',
         level: 'error',
         message: `The specification sheet 'empty_rule_name' contains empty rule columns`,
         sheet: 'empty_rule_name',
@@ -331,9 +333,10 @@ describe('Import specification table', async () => {
 
     expect(errors.length).toEqual(1)
     delete errors[0].time
+    delete errors[0].stack
     expect(errors).toEqual([
       {
-        function: 'parseExcelSheet',
+        function: 'parse',
         level: 'error',
         message: `SheetEndRow: Could not find the end sheet identifier '<END>' in the sheet 'no_end_row' in column '0'`,
         sheet: 'no_end_row',
@@ -349,9 +352,10 @@ describe('Import specification table', async () => {
 
     expect(errors.length).toEqual(1)
     delete errors[0].time
+    delete errors[0].stack
     expect(errors).toEqual([
       {
-        function: 'parseExcelSheet',
+        function: 'parse',
         level: 'error',
         message: `The specification sheet 'no_rule' does not contain any rule`,
         sheet: 'no_rule',
