@@ -1,6 +1,7 @@
 == ImporterInterface
-This interface defines the functions an importer must implement
-to work with this processor.
+The importer is responsible to load data from a spreadsheet. This interface must be implemented
+to use custom importer. The Importer is used by a parser to read the files and create the table model.
+The importer does not care about the content of the spreadsheet. It is just an abstract spreadsheet reader.
 
 
 === Functions
