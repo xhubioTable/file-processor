@@ -64,6 +64,7 @@ test('Test action_on_person table: load ', async done => {
       ['x', undefined, undefined, 'x', 'x'],
       ['x', undefined, 'x', undefined, 'x'],
     ],
+    meta: {},
     name: 'Action on Person',
     rows: [
       {

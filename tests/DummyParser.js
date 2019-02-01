@@ -7,6 +7,6 @@ export default class ParserInterface {
    */
   // eslint-disable-next-line no-unused-vars
   async parse(sheetName, importer) {
-    return { name: sheetName, type: 'dummyModel' }
+    return { name: sheetName, type: 'dummyModel', meta: {} }
   }
 }

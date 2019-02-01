@@ -162,6 +162,9 @@ export default class FileProcessor {
 
           // Ok, parse the sheet
           const tableModel = await parser.parse(sheetName, importer)
+
+          // add the original file name as meta information to the table
+          tableModel.meta.fileName = fileName
           await this._addTable(sheetName, tableModel)
         } else {
           await this.logger.info(

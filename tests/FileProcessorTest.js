@@ -27,8 +27,22 @@ test('load files', async done => {
 
   expect(LOGGER.entries.error).toEqual([])
   expect(fileProcessor.tables).toEqual([
-    { name: 'Action on Person', type: 'dummyModel' },
-    { name: 'Aktion auf Tour', type: 'dummyModel' },
+    {
+      name: 'Action on Person',
+      type: 'dummyModel',
+      meta: {
+        fileName:
+          '/Users/torstenlink/Documents/entwicklung/xhubTable/file-processor/tests/fixtures/matrix/action_on_person.xls',
+      },
+    },
+    {
+      name: 'Aktion auf Tour',
+      type: 'dummyModel',
+      meta: {
+        fileName:
+          '/Users/torstenlink/Documents/entwicklung/xhubTable/file-processor/tests/fixtures/matrix/matrix_table.xls',
+      },
+    },
   ])
   done()
 })
