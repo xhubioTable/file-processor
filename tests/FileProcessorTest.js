@@ -10,6 +10,8 @@ const LOGGER = getLoggerMemory()
 const parser = new DummyParser()
 const importer = new ImporterXlsx()
 
+const FIXTURES = path.join(__dirname, 'fixtures')
+
 test('load files', async done => {
   LOGGER.clear()
 
@@ -31,16 +33,14 @@ test('load files', async done => {
       name: 'Action on Person',
       type: 'dummyModel',
       meta: {
-        fileName:
-          '/Users/torstenlink/Documents/entwicklung/xhubTable/file-processor/tests/fixtures/matrix/action_on_person.xls',
+        fileName: path.join(FIXTURES, 'matrix', 'action_on_person.xls'),
       },
     },
     {
       name: 'Aktion auf Tour',
       type: 'dummyModel',
       meta: {
-        fileName:
-          '/Users/torstenlink/Documents/entwicklung/xhubTable/file-processor/tests/fixtures/matrix/matrix_table.xls',
+        fileName: path.join(FIXTURES, 'matrix', 'matrix_table.xls'),
       },
     },
   ])
