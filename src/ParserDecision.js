@@ -492,14 +492,32 @@ export default class ParserDecision extends ParserBase {
     assert(startRow !== undefined)
     assert(sheetEndRow !== undefined && sheetEndRow > 0)
 
+    // each time a value is entered in the first column a sectionType
+    // should exists
+
     let isError = false
     let sectionType
+    let firstColCell // the value of the first column
     let currentRow = startRow
     let sectionStartRow
     let sectionStartType
     let sectionEndRow
     do {
       sectionType = importer.cellValue(sheetName, COLUMN_TYPE, currentRow)
+      firstColCell = importer.cellValue(sheetName, START_COLUMN, currentRow)
+      if (
+        firstColCell !== undefined &&
+        sectionType === undefined &&
+        currentRow > START_ROW + 1
+      ) {
+        await this.logger.error({
+          message: `If a name is entered in column '${START_COLUMN}' a sectionType must be probvided in column '${COLUMN_TYPE}'`,
+          function: 'getNextSection',
+          row: currentRow,
+          column: START_COLUMN,
+        })
+        isError = true
+      }
 
       if (sectionType !== undefined) {
         if (this.sectionHandler[sectionType] !== undefined) {

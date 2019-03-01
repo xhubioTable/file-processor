@@ -17,6 +17,12 @@ const dataFileSingleRowSections = path.join(
   'decision/decision_table_mini_singleRowSection.xls'
 )
 
+const dataFileMissingSectionType = path.join(
+  fixturesDir,
+  'decision',
+  'table_missing_section.xlsx'
+)
+
 const logger = getLoggerMemory()
 logger.clear()
 logger.writeConsole = false
@@ -168,39 +174,27 @@ describe('Import decision table Tests', () => {
   })
 })
 
-describe('Import decision table with single row sections', () => {
-  test('xxxx', async done => {
-    logger.clear()
+test('Import decision table with single row sections', async done => {
+  logger.clear()
 
-    const importer = new ImporterXlsx()
-    importer.loadFile(dataFileSingleRow)
-    const parser = new ParserDecision({ logger })
-    const table = await parser.parse('CreatePerson_mini', importer)
+  const importer = new ImporterXlsx()
+  importer.loadFile(dataFileSingleRow)
+  const parser = new ParserDecision({ logger })
+  const table = await parser.parse('CreatePerson_mini', importer)
 
-    // update the calculation
-    table.calculate()
-    // Print the table json
-    // eslint-disable-next-line no-sync
-    // jsonfile.writeFileSync('./tests/table_createPersonSingleRow.json', table, {
-    //   spaces: 2,
-    // })
+  // update the calculation
+  table.calculate()
+  // Print the table json
+  // eslint-disable-next-line no-sync
+  // jsonfile.writeFileSync('./tests/table_createPersonSingleRow.json', table, {
+  //   spaces: 2,
+  // })
 
-    // validation test
-    logger.clear()
-    const issues = table.validate()
+  expect(logger.entries.error).toEqual([])
 
-    issues.forEach(issue => {
-      delete issue.section
-      delete issue.testcase
-    })
-
-    // console.log('###################################');
-    // console.log(JSON.stringify(issues, null, 2))
-    // console.log('###################################');
-
-    expect(1).toEqual(1)
-    done()
-  })
+  const issues = table.validate()
+  expect(issues).toEqual([])
+  done()
 })
 
 test('import single row sections', async done => {
@@ -213,19 +207,79 @@ test('import single row sections', async done => {
 
   // update the calculation
   table.calculate()
-  // Print the table json
-  // eslint-disable-next-line no-sync
-  // jsonfile.writeFileSync(
-  //   './tests/volatile/descission_table_singleRow.json',
-  //   table,
-  //   {
-  //     spaces: 2,
-  //   }
-  // )
 
-  // validation test
+  expect(logger.entries.error).toEqual([])
+  done()
+})
+
+test('import table with missing section type', async done => {
   logger.clear()
 
-  expect(1).toEqual(1)
+  const importer = new ImporterXlsx()
+  importer.loadFile(dataFileMissingSectionType)
+  const parser = new ParserDecision({ logger })
+
+  try {
+    await parser.parse('table_missing_sectionType', importer)
+  } catch (e) {
+    expect(e.message).toEqual(
+      'Could not parse the sheet beacause of the found errors!'
+    )
+  }
+
+  for (const err of logger.entries.error) {
+    delete err.time
+  }
+
+  expect(logger.entries.error).toEqual([
+    {
+      level: 'error',
+      message:
+        "If a name is entered in column '0' a sectionType must be probvided in column '1'",
+      function: 'getNextSection',
+      row: 50,
+      column: 0,
+    },
+    {
+      level: 'error',
+      message:
+        "If a name is entered in column '0' a sectionType must be probvided in column '1'",
+      function: 'getNextSection',
+      row: 51,
+      column: 0,
+    },
+  ])
+  done()
+})
+
+test('import table with missing subSection type', async done => {
+  logger.clear()
+
+  const importer = new ImporterXlsx()
+  importer.loadFile(dataFileMissingSectionType)
+  const parser = new ParserDecision({ logger })
+
+  try {
+    await parser.parse('table_missing_subSectionType', importer)
+  } catch (e) {
+    expect(e.message).toEqual(
+      'Could not parse the sheet beacause of the found errors!'
+    )
+  }
+
+  for (const err of logger.entries.error) {
+    delete err.time
+  }
+
+  expect(logger.entries.error).toEqual([
+    {
+      level: 'error',
+      message:
+        "If a name is entered in column '0' a sectionType must be probvided in column '1'",
+      function: 'getNextSection',
+      row: 35,
+      column: 0,
+    },
+  ])
   done()
 })
