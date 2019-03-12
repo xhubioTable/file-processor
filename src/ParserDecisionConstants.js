@@ -15,4 +15,5 @@ export const COLUMN_MURO_COMMENT = START_COLUMN + 4
 export const KEY_TABLE_START = '<DECISION_TABLE>'
 
 export const EXECUTE_SECTION = 'ExecuteSection'
+export const NEVER_EXECUTE_SECTION = 'NeverExecuteSection'
 export const MULTIPLICITY_SECTION = 'MultiplicitySection'

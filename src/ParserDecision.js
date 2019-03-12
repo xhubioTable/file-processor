@@ -13,6 +13,7 @@ import {
   COLUMN_MURO_OTHER,
   COLUMN_MURO_COMMENT,
   EXECUTE_SECTION,
+  NEVER_EXECUTE_SECTION,
   MULTIPLICITY_SECTION,
 } from './ParserDecisionConstants'
 
@@ -27,6 +28,7 @@ export default class ParserDecision extends ParserBase {
       SummarySection: this.handleSummarySection,
       MultiplicitySection: this.handleMultiplicitySection,
       ExecuteSection: this.handleExecuteSection,
+      NeverExecuteSection: this.handleNeverExecuteSection,
       FieldSection: this.handleFieldSection,
       FieldSubSection: 'SUB_SECTION',
     }
@@ -109,6 +111,7 @@ export default class ParserDecision extends ParserBase {
     } while (processSheet)
 
     this._updateTestcaseExecute(table)
+    this._updateTestcaseNeverExecute(table)
     this._updateTestcaseMultiplicity(table)
 
     return table
@@ -190,6 +193,23 @@ export default class ParserDecision extends ParserBase {
         // Get the value from the testcase for this section
         const val = testcase.data[section.headerRow]
         testcase.execute = this._getBoolean(val)
+      }
+    }
+  }
+
+  /**
+   * After the table was loaded it must be checked if there is a 'ExecuteSection'.
+   * If so the values must be set in the testcase.execute property
+   * @param table {object} The table to be updated
+   */
+  _updateTestcaseNeverExecute(table) {
+    const section = table.singleCheck.get(NEVER_EXECUTE_SECTION)
+    if (section !== undefined) {
+      for (const key of Object.keys(table.testcases)) {
+        const testcase = table.testcases[key]
+        // Get the value from the testcase for this section
+        const val = testcase.data[section.headerRow]
+        testcase.neverExecute = this._getBoolean(val)
       }
     }
   }
@@ -296,13 +316,30 @@ export default class ParserDecision extends ParserBase {
   }
 
   /**
-   * Adds a new SummarySection to the table. Updates the data for all the testcases
+   * Adds a new ExecuteSection to the table. Updates the data for all the testcases
    * @param table {object} The table to store the current sheet data
    * @param sectionName {string} The name of this section
    */
   async handleExecuteSection(opts) {
     const { table, sheetName, importer, sectionName, startRow } = opts
     const sectionDefinition = table.addNewExecuteSection(sectionName)
+    this._readTestcaseValues(
+      table,
+      sheetName,
+      importer,
+      startRow,
+      sectionDefinition.headerRow
+    )
+  }
+
+  /**
+   * Adds a new NeverExecuteSection to the table. Updates the data for all the testcases
+   * @param table {object} The table to store the current sheet data
+   * @param sectionName {string} The name of this section
+   */
+  async handleNeverExecuteSection(opts) {
+    const { table, sheetName, importer, sectionName, startRow } = opts
+    const sectionDefinition = table.addNewNeverExecuteSection(sectionName)
     this._readTestcaseValues(
       table,
       sheetName,
