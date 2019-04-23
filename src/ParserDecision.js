@@ -29,6 +29,8 @@ export default class ParserDecision extends ParserBase {
       MultiplicitySection: this.handleMultiplicitySection,
       ExecuteSection: this.handleExecuteSection,
       NeverExecuteSection: this.handleNeverExecuteSection,
+      TagSection: this.handleTagSection,
+      FilterSection: this.handleFilterSection,
       FieldSection: this.handleFieldSection,
       FieldSubSection: 'SUB_SECTION',
     }
@@ -263,6 +265,7 @@ export default class ParserDecision extends ParserBase {
     }
     return 1
   }
+
   /**
    * Adds a new MultiRowSection to the table. Updates the data for all the testcases
    * @param table {object} The table to store the current sheet data
@@ -298,6 +301,83 @@ export default class ParserDecision extends ParserBase {
       this._readTestcaseValues(table, sheetName, importer, i, rowId)
     }
   }
+
+  /**
+   * Adds a new TagSection to the table. Updates the data for all the test cases
+   * @param table {object} The table to store the current sheet data
+   * @param sheetName {string} The name of the sheet
+   * @param importer {object} The importer
+   * @param sectionName {string} The name of this section
+   * @param startRow {number} The row the section begins
+   * @param endRow {number} The row the next section begins
+   */
+  async handleTagSection(opts) {
+    const { table, sheetName, importer, sectionName, startRow, endRow } = opts
+
+    // create new section
+    const section = table.addNewTagSection(sectionName)
+
+    // add the rows
+    for (let i = startRow + 1; i < endRow; i++) {
+      const tag = importer.cellValue(sheetName, COLUMN_MURO_KEY, i)
+      const comment = importer.cellValue(sheetName, COLUMN_MURO_COMMENT, i)
+      const other = importer.cellValue(sheetName, COLUMN_MURO_OTHER, i)
+
+      const rowId = section.createNewRow()
+      if (tag !== undefined) {
+        section.tags[rowId] = tag
+      }
+      if (comment !== undefined) {
+        section.comments[rowId] = comment
+      }
+      if (other !== undefined) {
+        section.others[rowId] = other
+      }
+
+      this._readTestcaseValues(table, sheetName, importer, i, rowId)
+    }
+  }
+
+  /**
+   * Adds a new TagSection to the table. Updates the data for all the test cases
+   * @param table {object} The table to store the current sheet data
+   * @param sheetName {string} The name of the sheet
+   * @param importer {object} The importer
+   * @param sectionName {string} The name of this section
+   * @param startRow {number} The row the section begins
+   * @param endRow {number} The row the next section begins
+   */
+  async handleFilterSection(opts) {
+    const { table, sheetName, importer, sectionName, startRow, endRow } = opts
+
+    // create new section
+    const section = table.addNewFilterSection(sectionName)
+
+    // add the rows
+    for (let i = startRow + 1; i < endRow; i++) {
+      const filterProcessorName = importer.cellValue(
+        sheetName,
+        COLUMN_MURO_KEY,
+        i
+      )
+      const expression = importer.cellValue(sheetName, COLUMN_MURO_OTHER, i)
+      const comment = importer.cellValue(sheetName, COLUMN_MURO_COMMENT, i)
+
+      const rowId = section.createNewRow()
+      if (filterProcessorName !== undefined) {
+        section.filterProcessorNames[rowId] = filterProcessorName
+      }
+      if (expression !== undefined) {
+        section.expressions[rowId] = expression
+      }
+      if (comment !== undefined) {
+        section.comments[rowId] = comment
+      }
+
+      this._readTestcaseValues(table, sheetName, importer, i, rowId)
+    }
+  }
+
   /**
    * Adds a new SummarySection to the table. Updates the data for all the testcases
    * @param table {object} The table to store the current sheet data
