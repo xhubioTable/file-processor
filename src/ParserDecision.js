@@ -19,10 +19,15 @@ import {
 
 import { START_ROW, START_COLUMN } from './ParserConstants'
 
+/**
+ * The parser implementation to parse decision tables.
+ * @extends ParserBase
+ */
 export default class ParserDecision extends ParserBase {
   constructor(opts = {}) {
     super(opts)
 
+    /** Stores the handler for the different kind of sections. */
     this.sectionHandler = {
       MultiRowSection: this.handleMultiRowSection,
       SummarySection: this.handleSummarySection,
@@ -35,11 +40,13 @@ export default class ParserDecision extends ParserBase {
       FieldSubSection: 'SUB_SECTION',
     }
 
+    /** This sequence is used to give each field a unique name. */
     this.fieldNameSequence = 0
   }
 
   /**
-   * Parser the sheet with the given name
+   * Parses the sheet with the given name und uses the given importer to access
+   * the data.
    * @param sheetName {string} The name of the sheet
    * @param importer {object} The importer
    * @return tableModel {object} The created tablemodel

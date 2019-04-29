@@ -40,14 +40,21 @@ const META_COLUMNS = {
   description: COLUMN_DESCRIPTION,
 }
 
+/**
+ * The parser for the matrix tables.
+ * @extends ParserBase
+ */
 export default class ParserMatrix extends ParserBase {
   constructor(opts = {}) {
     super(opts)
+
+    /** This sequence is used to give each field a unique name. */
     this.fieldNameSequence = 0
   }
 
   /**
-   * Parser the sheet with the given name
+   * Parses the sheet with the given name und uses the given importer to access
+   * the data.
    * @param sheetName {string} The name of the sheet
    * @param importer {object} The importer
    * @return tableModel {object} The created tablemodel

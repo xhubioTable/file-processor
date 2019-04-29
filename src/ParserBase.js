@@ -7,6 +7,10 @@ import {
   MAX_EMPTY_LINES,
 } from './ParserConstants'
 
+/**
+ * For each different type of table an own parser is needed. This is the
+ * base implementation of the parser used by different parser types.
+ */
 export default class ParserBase {
   /**
    * @param startRow {number} The start row of this sheet
@@ -15,15 +19,23 @@ export default class ParserBase {
    * @param name {string} The name of this sheet
    */
   constructor(opts = {}) {
+    /** The row the parser will start. */
     this.startRow = opts.startRow !== undefined ? opts.startRow : START_ROW
+
+    /** The column the parser will start. */
     this.startColumn =
       opts.startColumn !== undefined ? opts.startColumn : START_COLUMN
+
+    /** The key used to find the las column or row. */
     this.endKey = opts.endKey !== undefined ? opts.endKey : KEY_TABLE_END
+
+    /** The logger used for this parser */
     this.logger = opts.logger ? opts.logger : getLoggerMemory()
   }
 
   /**
-   * Parser the sheet with the given name
+   * Parses the sheet with the given name und uses the given importer to access
+   * the data.
    * @param sheetName {string} The name of the sheet
    * @param importer {object} The importer
    * @return tableModel {object} The created tablemodel

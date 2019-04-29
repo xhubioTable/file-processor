@@ -2,7 +2,6 @@
  * Defines the interface for an importer.
  * An importer loads an Spreadsheet file and returns a map of sheets
  */
-
 export class ImporterInterface {
   /**
    * Opens a file and loads it. This could be spreadsheet or whatever

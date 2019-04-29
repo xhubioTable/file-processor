@@ -9,6 +9,10 @@ import {
   START_COLUMN_RULE,
 } from './ParserSpecificationConstants'
 
+/**
+ * The parser implementation to parse specification tables.
+ * @extends ParserBase
+ */
 export default class ImporterSpecification extends ParserBase {
   async parse(sheetName, importer) {
     try {

@@ -4,6 +4,7 @@ import { TableDecision } from '@xhubiotable/model-decision'
 
 /**
  * Converts a specification object into a decision table model.
+ * It takes a loaded specification table and converts it.
  */
 export default class ParserSpecificationConverter {
   /**
@@ -14,6 +15,7 @@ export default class ParserSpecificationConverter {
   convert(specification) {
     assert.ok(specification, 'No specification object given')
 
+    /** Stores the decision table object */
     const table = new TableDecision()
 
     this._createExecutionMultirowSection(table)

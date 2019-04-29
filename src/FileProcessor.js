@@ -23,32 +23,48 @@ const DEFAULT_TABLE_TYPE_KEYS = [
 ]
 
 /**
- * This registry stores all the available importer for a file
- * extension
+ * The file processor.
  */
 export default class FileProcessor {
   constructor(opts = {}) {
+    /** The logger for the processor */
     this.logger = opts.logger || getLoggerMemory()
 
-    // This map stores importer to load files by there file extension
+    /** {map} Stores importer for file extensions. So the extension of a file defines which importer is used. */
     this.importerMap = new Map()
 
-    // for every loaded file there may be different type of tables in one Spreadsheet.
-    // This map has a parser for the different table types
+    /** for every loaded file there may be different type of tables in one Spreadsheet.
+     * This map has a parser for the different table types. The processor reads the value
+     * in the first cell. This value is the table type. Then teh processor looks up
+     * if there is a parser registered for this table type.
+     */
     this.parserMap = new Map()
 
-    // Defines the start and end row per sheetName
+    /**
+     * Defines the start column and row per sheetName. Also which key is used
+     * to find the end of a row or the last column.
+     * This map stores the definition per sheet name.
+     * The format of ths definition is:
+     * {
+     *   startRow: 0,
+     *   startColumn: 0,
+     *   endKey: '<END>',
+     * }
+     */
     this.sheetDefinition = {}
+
     this.sheetDefinition[DEFAULT_SHEET_NAME] = {
       startRow: START_ROW,
       startColumn: START_COLUMN,
       endKey: TABLE_END_KEY,
     }
 
-    // The importer will load only tables wich match the given keys
-    // The key value must be in the first cell of the table defined by
-    // start_row and start_column
-    // The keys are not case sensitive
+    /**
+     * The importer will load only tables wich match the given keys
+     * The key value must be in the first cell of the table defined by
+     * start_row and start_column
+     * The keys are not case sensitive
+     */
     this.tableTypeKeys = opts.tableTypeKeys
       ? opts.tableTypeKeys
       : DEFAULT_TABLE_TYPE_KEYS
@@ -56,6 +72,10 @@ export default class FileProcessor {
     this._tables = new Map()
   }
 
+  /**
+   * Returns all the laoded table models
+   * @return {array} A list of tables
+   */
   get tables() {
     return Array.from(this._tables.values())
   }
@@ -71,7 +91,6 @@ export default class FileProcessor {
    * Loads a list of files
    * @param fileNames {string|array} The file(s) to open
    */
-  // eslint-disable-next-line no-unused-vars
   async load(fileNames) {
     if (!Array.isArray(fileNames)) {
       // eslint-disable-next-line no-param-reassign
@@ -108,7 +127,9 @@ export default class FileProcessor {
   }
 
   /**
-   * adds a new table to the loaded tables
+   * Adds a new table to the loaded tables
+   * @param sheetName {string} The name of the table
+   * @param tableModel {object} The table itself
    */
   async _addTable(sheetName, tableModel) {
     if (this._tables.has(sheetName)) {
@@ -120,7 +141,7 @@ export default class FileProcessor {
   }
 
   /**
-   * processes the sheets imported by the importer
+   * Processes the sheets imported by the importer.
    * @param importer {object} The sheet importer
    * @param fileName {string} The name of the file
    */
