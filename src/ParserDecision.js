@@ -12,10 +12,15 @@ import {
   COLUMN_MURO_KEY,
   COLUMN_MURO_OTHER,
   COLUMN_MURO_COMMENT,
+} from './ParserDecisionConstants'
+
+import { sectionTypes } from '@xhubiotable/model-decision'
+
+const {
   EXECUTE_SECTION,
   NEVER_EXECUTE_SECTION,
   MULTIPLICITY_SECTION,
-} from './ParserDecisionConstants'
+} = sectionTypes
 
 import { START_ROW, START_COLUMN } from './ParserConstants'
 
@@ -36,6 +41,7 @@ export default class ParserDecision extends ParserBase {
       NeverExecuteSection: this.handleNeverExecuteSection,
       TagSection: this.handleTagSection,
       FilterSection: this.handleFilterSection,
+      GeneratorSwitchSection: this.handleGeneratorSwitchSection,
       FieldSection: this.handleFieldSection,
       FieldSubSection: 'SUB_SECTION',
     }
@@ -376,6 +382,42 @@ export default class ParserDecision extends ParserBase {
       }
       if (expression !== undefined) {
         section.expressions[rowId] = expression
+      }
+      if (comment !== undefined) {
+        section.comments[rowId] = comment
+      }
+
+      this._readTestcaseValues(table, sheetName, importer, i, rowId)
+    }
+  }
+
+  /**
+   * Adds a new GeneratorSwitch to the table. Updates the data for all the test cases
+   * @param table {object} The table to store the current sheet data
+   * @param sheetName {string} The name of the sheet
+   * @param importer {object} The importer
+   * @param sectionName {string} The name of this section
+   * @param startRow {number} The row the section begins
+   * @param endRow {number} The row the next section begins
+   */
+  async handleGeneratorSwitchSection(opts) {
+    const { table, sheetName, importer, sectionName, startRow, endRow } = opts
+
+    // create new section
+    const section = table.addNewGeneratorSwitchSection(sectionName)
+
+    // add the rows
+    for (let i = startRow + 1; i < endRow; i++) {
+      const generatorName = importer.cellValue(sheetName, COLUMN_MURO_KEY, i)
+      const values = importer.cellValue(sheetName, COLUMN_MURO_OTHER, i)
+      const comment = importer.cellValue(sheetName, COLUMN_MURO_COMMENT, i)
+
+      const rowId = section.createNewRow()
+      if (generatorName !== undefined) {
+        section.generatorNames[rowId] = generatorName
+      }
+      if (values !== undefined) {
+        section.values[rowId] = values
       }
       if (comment !== undefined) {
         section.comments[rowId] = comment

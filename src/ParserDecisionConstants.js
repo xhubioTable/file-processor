@@ -22,10 +22,3 @@ export const COLUMN_MURO_COMMENT = START_COLUMN + 4
 
 /** The identifier for the decision table. @enum {string} */
 export const KEY_TABLE_START = '<DECISION_TABLE>'
-
-/** The identifier for the 'execute section'. @enum {string} */
-export const EXECUTE_SECTION = 'ExecuteSection'
-/** The identifier for the 'never execute section'. @enum {string} */
-export const NEVER_EXECUTE_SECTION = 'NeverExecuteSection'
-/** The identifier for the 'multiplicity section'. @enum {string} */
-export const MULTIPLICITY_SECTION = 'MultiplicitySection'
