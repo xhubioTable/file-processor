@@ -70,7 +70,7 @@
   "dependencies": {
     "@babel/runtime": "7.4.4",
     "@xhubiotable/logger": "2.0.7",
-    "@xhubiotable/model-decision": "2.4.0",
+    "@xhubiotable/model-decision": "2.4.1",
     "@xhubiotable/model-matrix": "2.3.0"
   }
 }
