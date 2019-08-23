@@ -70,9 +70,7 @@ export default class ParserBase {
 
     if (endRow === 0) {
       throw new Error(
-        `SheetEndRow: Could not find the end sheet identifier '${
-          this.endKey
-        }' in the sheet '${sheetName}' in column '${this.startColumn}'`
+        `SheetEndRow: Could not find the end sheet identifier '${this.endKey}' in the sheet '${sheetName}' in column '${this.startColumn}'`
       )
     } else {
       this.logger.info(
@@ -110,9 +108,7 @@ export default class ParserBase {
 
     if (endColumn === 0) {
       throw new Error(
-        `SheetEndColumn: Could not find the end sheet identifier '${
-          this.endKey
-        }' in the sheet '${sheetName}' in row '${this.startRow}'`
+        `SheetEndColumn: Could not find the end sheet identifier '${this.endKey}' in the sheet '${sheetName}' in row '${this.startRow}'`
       )
     } else {
       this.logger.info(`Detect sheetEnd '${this.endKey}' in row '${endColumn}'`)
