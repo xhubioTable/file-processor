@@ -1,7 +1,7 @@
 import path from 'path'
 
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
-import { ParserMatrix } from '../lib/index'
+import { ParserMatrix } from '../src/index'
 import { getLoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
@@ -11,7 +11,7 @@ const logger = getLoggerMemory()
 logger.clear()
 logger.writeConsole = false
 
-test('Test action_on_person table: load ', async done => {
+test('Test action_on_person table: load ', async (done) => {
   const importer = new ImporterXlsx()
   importer.loadFile(filename)
   const parser = new ParserMatrix({ logger })

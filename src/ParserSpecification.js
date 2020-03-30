@@ -100,7 +100,7 @@ export default class ImporterSpecification extends ParserBase {
     specification.fields = fields.fields
     specification.rules = rules
 
-    severities.forEach(name => {
+    severities.forEach((name) => {
       specification.severities.push(name)
     })
 

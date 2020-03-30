@@ -1,7 +1,7 @@
 import path from 'path'
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 
-import { FileProcessor, ParserDecision } from '../lib/index'
+import { FileProcessor, ParserDecision } from '../src/index'
 import { getLoggerMemory } from '@xhubiotable/logger'
 
 const LOGGER = getLoggerMemory()
@@ -9,7 +9,7 @@ const LOGGER = getLoggerMemory()
 const parser = new ParserDecision()
 const importer = new ImporterXlsx()
 
-test('load files', async done => {
+test('load files', async (done) => {
   LOGGER.clear()
 
   const fileProcessor = new FileProcessor({ logger: LOGGER })

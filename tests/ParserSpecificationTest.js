@@ -1,7 +1,7 @@
 import path from 'path'
 
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
-import { ParserSpecification } from '../lib/index'
+import { ParserSpecification } from '../src/index'
 import { getLoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
@@ -17,7 +17,7 @@ const importer = new ImporterXlsx()
 importer.loadFile(filename)
 const parser = new ParserSpecification({ logger })
 
-test('Specification sheet', async done => {
+test('Specification sheet', async (done) => {
   logger.clear()
   await parser.parse('Specification', importer)
   errors = logger.entries.error
@@ -25,14 +25,14 @@ test('Specification sheet', async done => {
   done()
 })
 
-test('Specification_mini sheet', async done => {
+test('Specification_mini sheet', async (done) => {
   logger.clear()
   const model = await parser.parseSpecification('Specification_mini', importer)
   expect(model).toEqual(MINI_SPEC)
   done()
 })
 
-test('missing_severity_section sheet', async done => {
+test('missing_severity_section sheet', async (done) => {
   logger.clear()
   await parser.parse('missing_severity_section', importer)
   errors = logger.entries.error
@@ -50,7 +50,7 @@ test('missing_severity_section sheet', async done => {
   done()
 })
 
-test('missing_rule_section sheet', async done => {
+test('missing_rule_section sheet', async (done) => {
   logger.clear()
   await parser.parse('missing_rule_section', importer)
   errors = logger.entries.error
@@ -68,7 +68,7 @@ test('missing_rule_section sheet', async done => {
   done()
 })
 
-test('rule_without_severity sheet', async done => {
+test('rule_without_severity sheet', async (done) => {
   logger.clear()
   await parser.parse('rule_without_severity', importer)
   errors = logger.entries.error
@@ -86,7 +86,7 @@ test('rule_without_severity sheet', async done => {
   done()
 })
 
-test('rule_with_more_severity sheet', async done => {
+test('rule_with_more_severity sheet', async (done) => {
   logger.clear()
   await parser.parse('rule_with_more_severity', importer)
   errors = logger.entries.error
@@ -105,7 +105,7 @@ test('rule_with_more_severity sheet', async done => {
   done()
 })
 
-test('unused_severity sheet', async done => {
+test('unused_severity sheet', async (done) => {
   logger.clear()
   await parser.parse('unused_severity', importer)
   errors = logger.entries.error
@@ -124,7 +124,7 @@ test('unused_severity sheet', async done => {
   done()
 })
 
-test('double_severity sheet', async done => {
+test('double_severity sheet', async (done) => {
   logger.clear()
   await parser.parse('double_severity', importer)
   errors = logger.entries.error
@@ -143,7 +143,7 @@ test('double_severity sheet', async done => {
   done()
 })
 
-test('empty_row_1 sheet', async done => {
+test('empty_row_1 sheet', async (done) => {
   logger.clear()
   await parser.parse('empty_row_1', importer)
   errors = logger.entries.error
@@ -162,7 +162,7 @@ test('empty_row_1 sheet', async done => {
   done()
 })
 
-test('empty_row_2 sheet', async done => {
+test('empty_row_2 sheet', async (done) => {
   logger.clear()
   await parser.parse('empty_row_2', importer)
   errors = logger.entries.error
@@ -181,7 +181,7 @@ test('empty_row_2 sheet', async done => {
   done()
 })
 
-test('empty_row_3 sheet', async done => {
+test('empty_row_3 sheet', async (done) => {
   logger.clear()
   await parser.parse('empty_row_3', importer)
   errors = logger.entries.error
@@ -210,7 +210,7 @@ test('empty_row_3 sheet', async done => {
   done()
 })
 
-test('rule_does_not_exists sheet', async done => {
+test('rule_does_not_exists sheet', async (done) => {
   logger.clear()
   await parser.parse('rule_does_not_exists', importer)
   errors = logger.entries.error
@@ -228,7 +228,7 @@ test('rule_does_not_exists sheet', async done => {
   done()
 })
 
-test('empty_rule_name sheet', async done => {
+test('empty_rule_name sheet', async (done) => {
   logger.clear()
   await parser.parse('empty_rule_name', importer)
   errors = logger.entries.error
@@ -248,7 +248,7 @@ test('empty_rule_name sheet', async done => {
   done()
 })
 
-test('unused_rule_1 sheet', async done => {
+test('unused_rule_1 sheet', async (done) => {
   logger.clear()
   await parser.parse('unused_rule_1', importer)
   errors = logger.entries.error
@@ -266,7 +266,7 @@ test('unused_rule_1 sheet', async done => {
   done()
 })
 
-test('unused_rule_2 sheet', async done => {
+test('unused_rule_2 sheet', async (done) => {
   logger.clear()
   await parser.parse('unused_rule_2', importer)
   errors = logger.entries.error
@@ -284,7 +284,7 @@ test('unused_rule_2 sheet', async done => {
   done()
 })
 
-test('double_rule sheet', async done => {
+test('double_rule sheet', async (done) => {
   logger.clear()
   await parser.parse('double_rule', importer)
   errors = logger.entries.error
@@ -303,7 +303,7 @@ test('double_rule sheet', async done => {
   done()
 })
 
-test('row_without_rule sheet', async done => {
+test('row_without_rule sheet', async (done) => {
   logger.clear()
   await parser.parse('row_without_rule', importer)
   errors = logger.entries.error
@@ -322,7 +322,7 @@ test('row_without_rule sheet', async done => {
   done()
 })
 
-test('no_end_row sheet', async done => {
+test('no_end_row sheet', async (done) => {
   logger.clear()
   await parser.parse('no_end_row', importer)
   errors = logger.entries.error
@@ -341,7 +341,7 @@ test('no_end_row sheet', async done => {
   done()
 })
 
-test('no_rule sheet', async done => {
+test('no_rule sheet', async (done) => {
   logger.clear()
   await parser.parse('no_rule', importer)
   errors = logger.entries.error

@@ -45,7 +45,7 @@ export default class ParserSpecificationConverter {
     // Iterate the fields of the primary data
     for (let i = 0; i < rowIdObjects.length; i++) {
       const mainObject = rowIdObjects[i]
-      mainObject.error.forEach(rowId => {
+      mainObject.error.forEach((rowId) => {
         tcName++
         const tc = table.addNewTestcase(tcName)
         tc.data[rowId] = 'x'
@@ -53,10 +53,10 @@ export default class ParserSpecificationConverter {
         // set for all the following fields all the 'e'
         for (let j = i + 1; j < rowIdObjects.length; j++) {
           const nextObject = rowIdObjects[j]
-          nextObject.error.forEach(rowIdNext => {
+          nextObject.error.forEach((rowIdNext) => {
             tc.data[rowIdNext] = 'e'
           })
-          nextObject.valid.forEach(rowIdNext => {
+          nextObject.valid.forEach((rowIdNext) => {
             tc.data[rowIdNext] = 'a'
           })
         }
@@ -65,14 +65,14 @@ export default class ParserSpecificationConverter {
           // set for all the previous fields all the valid ones to 'e'
           for (let k = 0; k < i; k++) {
             const nextObject = rowIdObjects[k]
-            nextObject.valid.forEach(rowIdPrev => {
+            nextObject.valid.forEach((rowIdPrev) => {
               tc.data[rowIdPrev] = 'a'
             })
           }
         }
 
         // set the secundary data to 'a'
-        secDataObject.valid.forEach(rowIdSec => {
+        secDataObject.valid.forEach((rowIdSec) => {
           tc.data[rowIdSec] = 'a'
         })
       })
@@ -96,13 +96,13 @@ export default class ParserSpecificationConverter {
 
     const rowIdObjects = []
 
-    Object.keys(specification.fields).forEach(fieldName => {
+    Object.keys(specification.fields).forEach((fieldName) => {
       const fieldData = specification.fields[fieldName]
       // Stores the rules by there name
       const rules = {}
 
       if (fieldData.rules !== undefined) {
-        fieldData.rules.forEach(rule => {
+        fieldData.rules.forEach((rule) => {
           let ruleName = rule.ruleName
           if (typeof ruleName === 'string') {
             ruleName = ruleName.toUpperCase()
@@ -152,8 +152,8 @@ export default class ParserSpecificationConverter {
       error: [],
       valid: [],
     }
-    ;['valid', 'error'].forEach(type => {
-      Object.keys(classes[type]).forEach(className => {
+    ;['valid', 'error'].forEach((type) => {
+      Object.keys(classes[type]).forEach((className) => {
         const clazz = classes[type][className]
         const comment = clazz.comment
         const rowId = field.createNewRow()
@@ -243,7 +243,7 @@ export default class ParserSpecificationConverter {
         // add some other valid strings
         if (fieldRules.C4 === undefined && fieldRules.C5 === undefined) {
           const validStrings = ['naughty strings', 'number', 'float', 'boolean']
-          validStrings.forEach(name => {
+          validStrings.forEach((name) => {
             classes.valid[name] = { comment: ['name'] }
           })
         }
@@ -254,7 +254,7 @@ export default class ParserSpecificationConverter {
           classes.error.C2 = {
             comment: [`Fall below min ${fieldRules.C2.value} chars`],
           }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Min ${fieldRules.C2.value} chars`)
           })
         }
@@ -265,7 +265,7 @@ export default class ParserSpecificationConverter {
           classes.error.C3 = {
             comment: [`Exeeds max ${fieldRules.C3.value} chars`],
           }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Max ${fieldRules.C3.value} chars`)
           })
         }
@@ -281,7 +281,7 @@ export default class ParserSpecificationConverter {
           classes.error.C2 = {
             comment: [`Fall below min ${fieldRules.C2.value} date`],
           }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Min ${fieldRules.C2.value} date`)
           })
         }
@@ -291,7 +291,7 @@ export default class ParserSpecificationConverter {
           classes.error.C3 = {
             comment: [`Exeeds max ${fieldRules.C3.value} date`],
           }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Max ${fieldRules.C3.value} date`)
           })
         }
@@ -307,7 +307,7 @@ export default class ParserSpecificationConverter {
           classes.error.C2 = {
             comment: [`Fall below min ${fieldRules.C2.value}`],
           }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Min ${fieldRules.C2.value}`)
           })
         }
@@ -315,7 +315,7 @@ export default class ParserSpecificationConverter {
           // maximum string length
           classes.error.C3 = fieldRules.C2.severity
           classes.error.C3 = { comment: [`Exeeds max ${fieldRules.C3.value}`] }
-          Object.keys(classes.valid).forEach(name => {
+          Object.keys(classes.valid).forEach((name) => {
             classes.valid[name].comment.push(`Max ${fieldRules.C3.value}`)
           })
         }
@@ -331,7 +331,7 @@ export default class ParserSpecificationConverter {
     }
 
     // add all the custom rules
-    Object.keys(fieldRules).forEach(ruleName => {
+    Object.keys(fieldRules).forEach((ruleName) => {
       if (predefined[ruleName] === undefined) {
         const comment = specification.rules[ruleName].shortDesc
         classes.error[ruleName] = { comment: [comment] }
@@ -372,7 +372,7 @@ export default class ParserSpecificationConverter {
 
     const section = table.addNewMultiRowSection('Severity')
 
-    specification.severities.forEach(name => {
+    specification.severities.forEach((name) => {
       const rowId = section.createNewRow()
       section.keys[rowId] = name
     })

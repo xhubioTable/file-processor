@@ -1,7 +1,7 @@
 import path from 'path'
 
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
-import { ParserDecision } from '../lib/index'
+import { ParserDecision } from '../src/index'
 import { getLoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
@@ -73,7 +73,7 @@ describe('Importer Methods Tests', () => {
 })
 
 describe('Import decision table Tests', () => {
-  test('Test the table content', async done => {
+  test('Test the table content', async (done) => {
     // just test some content elements
 
     logger.clear()
@@ -149,7 +149,7 @@ describe('Import decision table Tests', () => {
     done()
   })
 
-  test('Test double field name', async done => {
+  test('Test double field name', async (done) => {
     logger.clear()
 
     const importer = new ImporterXlsx()
@@ -174,7 +174,7 @@ describe('Import decision table Tests', () => {
   })
 })
 
-test('Import decision table with single row sections', async done => {
+test('Import decision table with single row sections', async (done) => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -197,7 +197,7 @@ test('Import decision table with single row sections', async done => {
   done()
 })
 
-test('import single row sections', async done => {
+test('import single row sections', async (done) => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -212,7 +212,7 @@ test('import single row sections', async done => {
   done()
 })
 
-test('import table with missing section type', async done => {
+test('import table with missing section type', async (done) => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -252,7 +252,7 @@ test('import table with missing section type', async done => {
   done()
 })
 
-test('import table with missing subSection type', async done => {
+test('import table with missing subSection type', async (done) => {
   logger.clear()
 
   const importer = new ImporterXlsx()
