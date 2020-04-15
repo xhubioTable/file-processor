@@ -1,7 +1,7 @@
 import path from 'path'
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 
-import { FileProcessor, ParserDecision } from '../lib/index'
+import { FileProcessor, ParserDecision } from '../src/index'
 import { getLoggerMemory } from '@xhubiotable/logger'
 
 const logger = getLoggerMemory()
@@ -11,7 +11,7 @@ logger.writeConsole = false
 const parser = new ParserDecision({ logger })
 const importer = new ImporterXlsx()
 
-test('load file with tags and filter', async done => {
+test('load file with tags and filter', async (done) => {
   const fileProcessor = new FileProcessor({ logger })
   await fileProcessor.registerImporter('xlsx', importer)
   await fileProcessor.registerImporter('xls', importer)
