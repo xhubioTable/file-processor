@@ -71,5 +71,10 @@
     "@xhubiotable/logger": "2.0.10",
     "@xhubiotable/model-decision": "2.4.3",
     "@xhubiotable/model-matrix": "2.3.2"
+  },
+  "template": {
+    "usedBy": [
+      "xhubioTable/data-generator"
+    ]
   }
 }
