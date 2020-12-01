@@ -40,13 +40,13 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "7.12.1",
+    "@babel/cli": "7.12.8",
     "@babel/core": "7.12.9",
     "@babel/node": "7.12.6",
     "@babel/plugin-proposal-object-rest-spread": "7.12.1",
     "@babel/plugin-transform-runtime": "7.12.1",
     "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.12.1",
+    "@babel/preset-env": "7.12.7",
     "@babel/register": "7.12.1",
     "@xhubiotable/importer-xlsx": "2.0.11",
     "babel-core": "7.0.0-bridge.0",
@@ -62,14 +62,14 @@
     "jsdoc": "3.6.6",
     "jsdoc-export-default-interop": "0.3.1",
     "jsdoc-to-markdown": "6.0.1",
-    "prettier": "2.1.2",
+    "prettier": "2.2.1",
     "regenerator-runtime": "0.13.7",
-    "semantic-release": "17.2.2"
+    "semantic-release": "17.3.0"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@xhubiotable/logger": "2.0.12",
-    "@xhubiotable/model-decision": "2.4.4",
-    "@xhubiotable/model-matrix": "2.3.2"
+    "@xhubiotable/model-decision": "2.4.5",
+    "@xhubiotable/model-matrix": "2.3.3"
   }
 }
