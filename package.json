@@ -69,7 +69,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@xhubiotable/logger": "2.0.12",
-    "@xhubiotable/model-decision": "2.4.4",
+    "@xhubiotable/model-decision": "2.4.5",
     "@xhubiotable/model-matrix": "2.3.3"
   }
 }
