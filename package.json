@@ -67,6 +67,6 @@
     "@babel/runtime": "7.13.7",
     "@xhubiotable/logger": "2.0.12",
     "@xhubiotable/model-decision": "2.4.6",
-    "@xhubiotable/model-matrix": "2.3.4"
+    "@xhubiotable/model-matrix": "2.3.5"
   }
 }
