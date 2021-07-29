@@ -11,7 +11,7 @@ logger.writeConsole = false
 const parser = new ParserDecision({ logger })
 const importer = new ImporterXlsx()
 
-test('load file with tags and filter', async (done) => {
+test('load file with tags and filter', async () => {
   const fileProcessor = new FileProcessor({ logger })
   await fileProcessor.registerImporter('xlsx', importer)
   await fileProcessor.registerImporter('xls', importer)
@@ -30,8 +30,6 @@ test('load file with tags and filter', async (done) => {
 
   expect(tablePerson).toBeDefined()
   expect(tableAddress).toBeDefined()
-
-  done()
 })
 
 /**

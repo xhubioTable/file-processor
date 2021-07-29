@@ -9,7 +9,7 @@ const LOGGER = getLoggerMemory()
 const parser = new ParserDecision()
 const importer = new ImporterXlsx()
 
-test('load files', async (done) => {
+test('load files', async () => {
   LOGGER.clear()
 
   const fileProcessor = new FileProcessor({ logger: LOGGER })
@@ -45,8 +45,6 @@ test('load files', async (done) => {
       expect(tc.neverExecute).toEqual(false)
     }
   }
-
-  done()
 })
 
 /**

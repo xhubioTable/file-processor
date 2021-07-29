@@ -16,11 +16,8 @@ import {
 
 import { sectionTypes } from '@xhubiotable/model-decision'
 
-const {
-  EXECUTE_SECTION,
-  NEVER_EXECUTE_SECTION,
-  MULTIPLICITY_SECTION,
-} = sectionTypes
+const { EXECUTE_SECTION, NEVER_EXECUTE_SECTION, MULTIPLICITY_SECTION } =
+  sectionTypes
 
 import { START_ROW, START_COLUMN } from './ParserConstants'
 
@@ -526,9 +523,8 @@ export default class ParserDecision extends ParserBase {
       }
 
       // create a new subSection
-      const subSectionDefinition = fieldSectionDefinition.createNewField(
-        fieldName
-      )
+      const subSectionDefinition =
+        fieldSectionDefinition.createNewField(fieldName)
       subSectionDefinition.name = importer.cellValue(
         sheetName,
         START_COLUMN,

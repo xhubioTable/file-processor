@@ -12,7 +12,7 @@ const importer = new ImporterXlsx()
 
 const FIXTURES = path.join(__dirname, 'fixtures')
 
-test('load files', async (done) => {
+test('load files', async () => {
   LOGGER.clear()
 
   const fileProcessor = new FileProcessor({ logger: LOGGER })
@@ -44,7 +44,6 @@ test('load files', async (done) => {
       },
     },
   ])
-  done()
 })
 
 /**

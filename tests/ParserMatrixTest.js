@@ -11,7 +11,7 @@ const logger = getLoggerMemory()
 logger.clear()
 logger.writeConsole = false
 
-test('Test action_on_person table: load ', async (done) => {
+test('Test action_on_person table: load ', async () => {
   const importer = new ImporterXlsx()
   importer.loadFile(filename)
   const parser = new ParserMatrix({ logger })
@@ -85,5 +85,4 @@ test('Test action_on_person table: load ', async (done) => {
       },
     ],
   })
-  done()
 })

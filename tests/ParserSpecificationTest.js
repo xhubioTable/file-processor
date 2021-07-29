@@ -17,22 +17,20 @@ const importer = new ImporterXlsx()
 importer.loadFile(filename)
 const parser = new ParserSpecification({ logger })
 
-test('Specification sheet', async (done) => {
+test('Specification sheet', async () => {
   logger.clear()
   await parser.parse('Specification', importer)
   errors = logger.entries.error
   expect(errors.length).toEqual(0)
-  done()
 })
 
-test('Specification_mini sheet', async (done) => {
+test('Specification_mini sheet', async () => {
   logger.clear()
   const model = await parser.parseSpecification('Specification_mini', importer)
   expect(model).toEqual(MINI_SPEC)
-  done()
 })
 
-test('missing_severity_section sheet', async (done) => {
+test('missing_severity_section sheet', async () => {
   logger.clear()
   await parser.parse('missing_severity_section', importer)
   errors = logger.entries.error
@@ -47,10 +45,9 @@ test('missing_severity_section sheet', async (done) => {
       sheet: 'missing_severity_section',
     },
   ])
-  done()
 })
 
-test('missing_rule_section sheet', async (done) => {
+test('missing_rule_section sheet', async () => {
   logger.clear()
   await parser.parse('missing_rule_section', importer)
   errors = logger.entries.error
@@ -65,10 +62,9 @@ test('missing_rule_section sheet', async (done) => {
       sheet: 'missing_rule_section',
     },
   ])
-  done()
 })
 
-test('rule_without_severity sheet', async (done) => {
+test('rule_without_severity sheet', async () => {
   logger.clear()
   await parser.parse('rule_without_severity', importer)
   errors = logger.entries.error
@@ -83,10 +79,9 @@ test('rule_without_severity sheet', async (done) => {
       sheet: 'rule_without_severity',
     },
   ])
-  done()
 })
 
-test('rule_with_more_severity sheet', async (done) => {
+test('rule_with_more_severity sheet', async () => {
   logger.clear()
   await parser.parse('rule_with_more_severity', importer)
   errors = logger.entries.error
@@ -102,10 +97,9 @@ test('rule_with_more_severity sheet', async (done) => {
       sheet: 'rule_with_more_severity',
     },
   ])
-  done()
 })
 
-test('unused_severity sheet', async (done) => {
+test('unused_severity sheet', async () => {
   logger.clear()
   await parser.parse('unused_severity', importer)
   errors = logger.entries.error
@@ -121,10 +115,9 @@ test('unused_severity sheet', async (done) => {
       sheet: 'unused_severity',
     },
   ])
-  done()
 })
 
-test('double_severity sheet', async (done) => {
+test('double_severity sheet', async () => {
   logger.clear()
   await parser.parse('double_severity', importer)
   errors = logger.entries.error
@@ -140,10 +133,9 @@ test('double_severity sheet', async (done) => {
       sheet: 'double_severity',
     },
   ])
-  done()
 })
 
-test('empty_row_1 sheet', async (done) => {
+test('empty_row_1 sheet', async () => {
   logger.clear()
   await parser.parse('empty_row_1', importer)
   errors = logger.entries.error
@@ -159,10 +151,9 @@ test('empty_row_1 sheet', async (done) => {
       sheet: 'empty_row_1',
     },
   ])
-  done()
 })
 
-test('empty_row_2 sheet', async (done) => {
+test('empty_row_2 sheet', async () => {
   logger.clear()
   await parser.parse('empty_row_2', importer)
   errors = logger.entries.error
@@ -178,10 +169,9 @@ test('empty_row_2 sheet', async (done) => {
       sheet: 'empty_row_2',
     },
   ])
-  done()
 })
 
-test('empty_row_3 sheet', async (done) => {
+test('empty_row_3 sheet', async () => {
   logger.clear()
   await parser.parse('empty_row_3', importer)
   errors = logger.entries.error
@@ -207,10 +197,9 @@ test('empty_row_3 sheet', async (done) => {
     },
   ])
   /* eslint-enable indent */
-  done()
 })
 
-test('rule_does_not_exists sheet', async (done) => {
+test('rule_does_not_exists sheet', async () => {
   logger.clear()
   await parser.parse('rule_does_not_exists', importer)
   errors = logger.entries.error
@@ -225,10 +214,9 @@ test('rule_does_not_exists sheet', async (done) => {
       sheet: 'rule_does_not_exists',
     },
   ])
-  done()
 })
 
-test('empty_rule_name sheet', async (done) => {
+test('empty_rule_name sheet', async () => {
   logger.clear()
   await parser.parse('empty_rule_name', importer)
   errors = logger.entries.error
@@ -245,10 +233,9 @@ test('empty_rule_name sheet', async (done) => {
       sheet: 'empty_rule_name',
     },
   ])
-  done()
 })
 
-test('unused_rule_1 sheet', async (done) => {
+test('unused_rule_1 sheet', async () => {
   logger.clear()
   await parser.parse('unused_rule_1', importer)
   errors = logger.entries.error
@@ -263,10 +250,9 @@ test('unused_rule_1 sheet', async (done) => {
       sheet: 'unused_rule_1',
     },
   ])
-  done()
 })
 
-test('unused_rule_2 sheet', async (done) => {
+test('unused_rule_2 sheet', async () => {
   logger.clear()
   await parser.parse('unused_rule_2', importer)
   errors = logger.entries.error
@@ -281,10 +267,9 @@ test('unused_rule_2 sheet', async (done) => {
       sheet: 'unused_rule_2',
     },
   ])
-  done()
 })
 
-test('double_rule sheet', async (done) => {
+test('double_rule sheet', async () => {
   logger.clear()
   await parser.parse('double_rule', importer)
   errors = logger.entries.error
@@ -300,10 +285,9 @@ test('double_rule sheet', async (done) => {
       sheet: 'double_rule',
     },
   ])
-  done()
 })
 
-test('row_without_rule sheet', async (done) => {
+test('row_without_rule sheet', async () => {
   logger.clear()
   await parser.parse('row_without_rule', importer)
   errors = logger.entries.error
@@ -319,10 +303,9 @@ test('row_without_rule sheet', async (done) => {
       sheet: 'row_without_rule',
     },
   ])
-  done()
 })
 
-test('no_end_row sheet', async (done) => {
+test('no_end_row sheet', async () => {
   logger.clear()
   await parser.parse('no_end_row', importer)
   errors = logger.entries.error
@@ -338,10 +321,9 @@ test('no_end_row sheet', async (done) => {
       sheet: 'no_end_row',
     },
   ])
-  done()
 })
 
-test('no_rule sheet', async (done) => {
+test('no_rule sheet', async () => {
   logger.clear()
   await parser.parse('no_rule', importer)
   errors = logger.entries.error
@@ -357,7 +339,6 @@ test('no_rule sheet', async (done) => {
       sheet: 'no_rule',
     },
   ])
-  done()
 })
 
 // test('Test the instance name', async done => {

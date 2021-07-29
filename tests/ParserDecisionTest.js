@@ -73,7 +73,7 @@ describe('Importer Methods Tests', () => {
 })
 
 describe('Import decision table Tests', () => {
-  test('Test the table content', async (done) => {
+  test('Test the table content', async () => {
     // just test some content elements
 
     logger.clear()
@@ -145,11 +145,9 @@ describe('Import decision table Tests', () => {
       tdgMandatory: false,
       tdgs: {},
     })
-
-    done()
   })
 
-  test('Test double field name', async (done) => {
+  test('Test double field name', async () => {
     logger.clear()
 
     const importer = new ImporterXlsx()
@@ -169,12 +167,10 @@ describe('Import decision table Tests', () => {
         row: 14,
       },
     ])
-
-    done()
   })
 })
 
-test('Import decision table with single row sections', async (done) => {
+test('Import decision table with single row sections', async () => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -194,10 +190,9 @@ test('Import decision table with single row sections', async (done) => {
 
   const issues = table.validate()
   expect(issues).toEqual([])
-  done()
 })
 
-test('import single row sections', async (done) => {
+test('import single row sections', async () => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -209,10 +204,9 @@ test('import single row sections', async (done) => {
   table.calculate()
 
   expect(logger.entries.error).toEqual([])
-  done()
 })
 
-test('import table with missing section type', async (done) => {
+test('import table with missing section type', async () => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -249,10 +243,9 @@ test('import table with missing section type', async (done) => {
       column: 0,
     },
   ])
-  done()
 })
 
-test('import table with missing subSection type', async (done) => {
+test('import table with missing subSection type', async () => {
   logger.clear()
 
   const importer = new ImporterXlsx()
@@ -281,5 +274,4 @@ test('import table with missing subSection type', async (done) => {
       column: 0,
     },
   ])
-  done()
 })
