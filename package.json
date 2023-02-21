@@ -64,7 +64,7 @@
     "semantic-release": "17.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "7.14.8",
+    "@babel/runtime": "7.21.0",
     "@xhubiotable/logger": "2.0.14",
     "@xhubiotable/model-decision": "2.4.8",
     "@xhubiotable/model-matrix": "2.3.6"
