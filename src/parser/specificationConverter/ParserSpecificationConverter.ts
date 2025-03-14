@@ -1,6 +1,9 @@
-import { FieldSectionDefinition, TableDecision } from '@tlink/model-decision'
+import {
+  FieldSectionDefinition,
+  TableDecision
+} from '@xhubiotable/model-decision'
 import { SpecificationInterface } from '../SpecificationInterface'
-import { LoggerInterface } from '@tlink/logger'
+import { LoggerInterface } from '@xhubiotable/logger'
 import { SpecificationModel } from '../ParserSpecification'
 import { EquivalenceClasses, FieldRules } from './RuleConverterInterface'
 

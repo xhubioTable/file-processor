@@ -1,8 +1,8 @@
 import path from 'node:path'
 
-import { ImporterInterface, ImporterXlsx } from '@tlink/importer-xlsx'
+import { ImporterInterface, ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import { ParserSpecification } from '../src/index'
-import { getLoggerMemory } from '@tlink/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
 const filename = path.join(fixturesDir, 'specification/specification_table.xls')

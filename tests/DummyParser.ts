@@ -2,8 +2,8 @@ import {
   ParserInterface,
   ParserParseRequest
 } from '../src/parser/ParserInterface'
-import { TableInterface } from '@tlink/model'
-import { LoggerInterface, LoggerMemory } from '@tlink/logger'
+import { TableInterface } from '@xhubiotable/model'
+import { LoggerInterface, LoggerMemory } from '@xhubiotable/logger'
 
 export class DummyParser implements ParserInterface {
   /** The row to start reading */

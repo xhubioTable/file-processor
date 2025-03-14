@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / ParserInterface
+[@xhubiotable/file-processor](../globals.md) / ParserInterface
 
 # Interface: ParserInterface
 
-Defined in: parser/ParserInterface.ts:14
+Defined in: [parser/ParserInterface.ts:14](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L14)
 
 The interface definition for all the table parser.
 
@@ -16,7 +16,7 @@ The interface definition for all the table parser.
 
 > **endKey**: `string`
 
-Defined in: parser/ParserInterface.ts:22
+Defined in: [parser/ParserInterface.ts:22](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L22)
 
 A string identifying the last row to read
 
@@ -26,7 +26,7 @@ A string identifying the last row to read
 
 > **logger**: `LoggerInterface`
 
-Defined in: parser/ParserInterface.ts:25
+Defined in: [parser/ParserInterface.ts:25](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L25)
 
 The logger to use
 
@@ -36,7 +36,7 @@ The logger to use
 
 > **parse**: (`request`) => `undefined` \| `TableInterface`
 
-Defined in: parser/ParserInterface.ts:33
+Defined in: [parser/ParserInterface.ts:33](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L33)
 
 Parses the sheet with the given name und uses the given importer to access
 the data.
@@ -65,7 +65,7 @@ ParserParseRequest
 
 > **startColumn**: `number`
 
-Defined in: parser/ParserInterface.ts:19
+Defined in: [parser/ParserInterface.ts:19](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L19)
 
 The column to start reading
 
@@ -75,6 +75,6 @@ The column to start reading
 
 > **startRow**: `number`
 
-Defined in: parser/ParserInterface.ts:16
+Defined in: [parser/ParserInterface.ts:16](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserInterface.ts#L16)
 
 The row to start reading

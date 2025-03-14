@@ -7,14 +7,14 @@ import {
   KEY_RULE,
   START_COLUMN_RULE
 } from '../constants/ParserSpecificationConstants'
-import { TableInterface } from '@tlink/model'
+import { TableInterface } from '@xhubiotable/model'
 import {
   SpecificationFieldInterface,
   SpecificationFieldRuleInterface,
   SpecificationInterface,
   SpecificationRuleInterface
 } from './SpecificationInterface'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 import { ParserParseRequest } from './ParserInterface'
 
 /**

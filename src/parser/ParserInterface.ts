@@ -1,6 +1,6 @@
-import { TableInterface } from '@tlink/model'
-import { LoggerInterface } from '@tlink/logger'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { TableInterface } from '@xhubiotable/model'
+import { LoggerInterface } from '@xhubiotable/logger'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 
 export interface ParserParseRequest {
   sheetName: string

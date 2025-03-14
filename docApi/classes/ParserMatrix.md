@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / ParserMatrix
+[@xhubiotable/file-processor](../globals.md) / ParserMatrix
 
 # Class: ParserMatrix
 
-Defined in: parser/ParserMatrix.ts:48
+Defined in: [parser/ParserMatrix.ts:48](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L48)
 
 The parser for the matrix tables.
 
@@ -20,7 +20,7 @@ The parser for the matrix tables.
 
 > **new ParserMatrix**(`opts`): [`ParserMatrix`](ParserMatrix.md)
 
-Defined in: parser/ParserBase.ts:47
+Defined in: [parser/ParserBase.ts:47](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L47)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ ParserBaseOptions
 
 > **emptyColumns**: `Set`\<`number`\>
 
-Defined in: parser/ParserMatrix.ts:53
+Defined in: [parser/ParserMatrix.ts:53](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L53)
 
 If a complete column is empty, it must not be parsed
 
@@ -58,7 +58,7 @@ If a complete column is empty, it must not be parsed
 
 > **emptyRows**: `Set`\<`number`\>
 
-Defined in: parser/ParserMatrix.ts:55
+Defined in: [parser/ParserMatrix.ts:55](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L55)
 
 If a complete row is empty, it must not be parsed
 
@@ -68,7 +68,7 @@ If a complete row is empty, it must not be parsed
 
 > **endKey**: `string`
 
-Defined in: parser/ParserBase.ts:39
+Defined in: [parser/ParserBase.ts:39](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L39)
 
 The key string used to find the last column or row.
 
@@ -82,7 +82,7 @@ The key string used to find the last column or row.
 
 > **fieldNameSequence**: `number` = `0`
 
-Defined in: parser/ParserMatrix.ts:50
+Defined in: [parser/ParserMatrix.ts:50](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L50)
 
 This sequence is used to give each field a unique name.
 
@@ -92,7 +92,7 @@ This sequence is used to give each field a unique name.
 
 > **logger**: `LoggerInterface`
 
-Defined in: parser/ParserBase.ts:42
+Defined in: [parser/ParserBase.ts:42](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L42)
 
 The logger used for this parser
 
@@ -106,7 +106,7 @@ The logger used for this parser
 
 > **startColumn**: `number`
 
-Defined in: parser/ParserBase.ts:36
+Defined in: [parser/ParserBase.ts:36](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L36)
 
 The column the parser will start reading.
 
@@ -120,7 +120,7 @@ The column the parser will start reading.
 
 > **startRow**: `number`
 
-Defined in: parser/ParserBase.ts:33
+Defined in: [parser/ParserBase.ts:33](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L33)
 
 The row the parser will start reading.
 
@@ -134,7 +134,7 @@ The row the parser will start reading.
 
 > **getEndColumn**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:120
+Defined in: [parser/ParserBase.ts:120](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L120)
 
 Parses the sheet to get the last column of the decision table.
 
@@ -174,7 +174,7 @@ The maximum of empty columns which will be ignored
 
 > **getEndRow**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:78
+Defined in: [parser/ParserBase.ts:78](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L78)
 
 Parses the sheet to get the last row of the imported table.
 
@@ -214,7 +214,7 @@ The index number of the last row of the table
 
 > **getFieldName**(): `string`
 
-Defined in: parser/ParserMatrix.ts:116
+Defined in: [parser/ParserMatrix.ts:116](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L116)
 
 Creates a unique field name.
 
@@ -230,7 +230,7 @@ The new generated fieldName
 
 > **parse**(`request`): `undefined` \| `TableInterface`
 
-Defined in: parser/ParserMatrix.ts:63
+Defined in: [parser/ParserMatrix.ts:63](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L63)
 
 Parses the sheet with the given name und uses the given importer to access
 the data.
@@ -267,7 +267,7 @@ ParserParseRequest
 
 > **parseMetaDataColumn**(`request`): `void`
 
-Defined in: parser/ParserMatrix.ts:208
+Defined in: [parser/ParserMatrix.ts:208](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserMatrix.ts#L208)
 
 Reads the meta data information of each column and stores it in the
 table object

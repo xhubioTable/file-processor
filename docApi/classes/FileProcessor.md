@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / FileProcessor
+[@xhubiotable/file-processor](../globals.md) / FileProcessor
 
 # Class: FileProcessor
 
-Defined in: FileProcessor.ts:52
+Defined in: [FileProcessor.ts:52](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L52)
 
 The file processor.
 
@@ -16,7 +16,7 @@ The file processor.
 
 > **new FileProcessor**(`opts`): [`FileProcessor`](FileProcessor.md)
 
-Defined in: FileProcessor.ts:97
+Defined in: [FileProcessor.ts:97](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L97)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: FileProcessor.ts:97
 
 > **importerMap**: `Map`\<`string`, `ImporterInterface`\>
 
-Defined in: FileProcessor.ts:57
+Defined in: [FileProcessor.ts:57](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L57)
 
 Stores importer for file extensions. So the extension of a file defines which importer is used.
 
@@ -44,7 +44,7 @@ Stores importer for file extensions. So the extension of a file defines which im
 
 > **logger**: `LoggerInterface`
 
-Defined in: FileProcessor.ts:54
+Defined in: [FileProcessor.ts:54](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L54)
 
 The logger for this file processor
 
@@ -54,7 +54,7 @@ The logger for this file processor
 
 > **parserMap**: `Map`\<`string`, [`ParserInterface`](../interfaces/ParserInterface.md)\>
 
-Defined in: FileProcessor.ts:67
+Defined in: [FileProcessor.ts:67](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L67)
 
 for every loaded file there may be different type of tables in one Spreadsheet.
 This map has a parser for the different table types. The processor reads the value
@@ -67,7 +67,7 @@ if there is a parser registered for this table type.
 
 > **sheetDefinition**: `SheetDefinition` = `{}`
 
-Defined in: FileProcessor.ts:80
+Defined in: [FileProcessor.ts:80](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L80)
 
 Defines the start column and row per sheetName. Also which key is used
 to find the end of a row or the last column.
@@ -85,7 +85,7 @@ The format of ths definition is:
 
 > **tableTypeKeys**: `string`[]
 
-Defined in: FileProcessor.ts:88
+Defined in: [FileProcessor.ts:88](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L88)
 
 The importer will load only tables wich match the given keys
 The key value must be in the first cell of the table defined by
@@ -100,7 +100,7 @@ The keys are not case sensitive
 
 > **get** **tables**(): `TableInterface`[]
 
-Defined in: FileProcessor.ts:122
+Defined in: [FileProcessor.ts:122](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L122)
 
 Returns all the laoded table models
 
@@ -116,7 +116,7 @@ A list of tables
 
 > **clearTables**(): `void`
 
-Defined in: FileProcessor.ts:129
+Defined in: [FileProcessor.ts:129](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L129)
 
 Delets all the loaded tables
 
@@ -130,7 +130,7 @@ Delets all the loaded tables
 
 > **getImporter**(`fileName`): `ImporterInterface`
 
-Defined in: FileProcessor.ts:270
+Defined in: [FileProcessor.ts:270](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L270)
 
 Returns an instance of a step class
 
@@ -154,7 +154,7 @@ The importer for this file or throws an exception
 
 > **getParser**(`type`): [`ParserInterface`](../interfaces/ParserInterface.md)
 
-Defined in: FileProcessor.ts:319
+Defined in: [FileProcessor.ts:319](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L319)
 
 Returns an instance of a step class
 
@@ -178,7 +178,7 @@ The parser for this table type or undefined
 
 > **load**(`fileNames`): `Promise`\<`void`\>
 
-Defined in: FileProcessor.ts:137
+Defined in: [FileProcessor.ts:137](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L137)
 
 Loads a list of files
 
@@ -200,7 +200,7 @@ The file(s) to open
 
 > **registerImporter**(`extension`, `importer`): `void`
 
-Defined in: FileProcessor.ts:255
+Defined in: [FileProcessor.ts:255](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L255)
 
 Registers an importer for a file extension. The extension are
 not case sensitive
@@ -229,7 +229,7 @@ An instance of an importer
 
 > **registerParser**(`type`, `parser`): `void`
 
-Defined in: FileProcessor.ts:304
+Defined in: [FileProcessor.ts:304](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L304)
 
 Registers a parser for a table type
 
@@ -257,7 +257,7 @@ The parser to use
 
 > **setSheetConfig**(`sheetName`, `config`): `void`
 
-Defined in: FileProcessor.ts:332
+Defined in: [FileProcessor.ts:332](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/FileProcessor.ts#L332)
 
 Sets a config for a sheet name. Each sheet may have different configs
 

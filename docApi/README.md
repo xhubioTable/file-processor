@@ -1,4 +1,4 @@
-**@tlink/file-processor**
+**@xhubiotable/file-processor**
 
 ***
 

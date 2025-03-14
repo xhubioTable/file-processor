@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / ParserBase
+[@xhubiotable/file-processor](../globals.md) / ParserBase
 
 # Class: `abstract` ParserBase
 
-Defined in: parser/ParserBase.ts:31
+Defined in: [parser/ParserBase.ts:31](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L31)
 
 For each different type of table an own parser is needed. This is the
 base implementation of the parser used by different parser types.
@@ -27,7 +27,7 @@ base implementation of the parser used by different parser types.
 
 > **new ParserBase**(`opts`): [`ParserBase`](ParserBase.md)
 
-Defined in: parser/ParserBase.ts:47
+Defined in: [parser/ParserBase.ts:47](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L47)
 
 #### Parameters
 
@@ -51,7 +51,7 @@ ParserBaseOptions
 
 > **endKey**: `string`
 
-Defined in: parser/ParserBase.ts:39
+Defined in: [parser/ParserBase.ts:39](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L39)
 
 The key string used to find the last column or row.
 
@@ -65,7 +65,7 @@ The key string used to find the last column or row.
 
 > **logger**: `LoggerInterface`
 
-Defined in: parser/ParserBase.ts:42
+Defined in: [parser/ParserBase.ts:42](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L42)
 
 The logger used for this parser
 
@@ -79,7 +79,7 @@ The logger used for this parser
 
 > **startColumn**: `number`
 
-Defined in: parser/ParserBase.ts:36
+Defined in: [parser/ParserBase.ts:36](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L36)
 
 The column the parser will start reading.
 
@@ -93,7 +93,7 @@ The column the parser will start reading.
 
 > **startRow**: `number`
 
-Defined in: parser/ParserBase.ts:33
+Defined in: [parser/ParserBase.ts:33](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L33)
 
 The row the parser will start reading.
 
@@ -107,7 +107,7 @@ The row the parser will start reading.
 
 > **getEndColumn**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:120
+Defined in: [parser/ParserBase.ts:120](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L120)
 
 Parses the sheet to get the last column of the decision table.
 
@@ -143,7 +143,7 @@ The maximum of empty columns which will be ignored
 
 > **getEndRow**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:78
+Defined in: [parser/ParserBase.ts:78](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L78)
 
 Parses the sheet to get the last row of the imported table.
 
@@ -179,7 +179,7 @@ The index number of the last row of the table
 
 > `abstract` **parse**(`request`): `undefined` \| `TableInterface`
 
-Defined in: parser/ParserBase.ts:69
+Defined in: [parser/ParserBase.ts:69](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L69)
 
 Parses the sheet with the given name und uses the given importer to access
 the data.

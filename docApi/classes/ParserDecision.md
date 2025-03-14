@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / ParserDecision
+[@xhubiotable/file-processor](../globals.md) / ParserDecision
 
 # Class: ParserDecision
 
-Defined in: parser/ParserDecision.ts:46
+Defined in: [parser/ParserDecision.ts:49](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L49)
 
 The parser implementation to parse decision tables.
 
@@ -20,7 +20,7 @@ The parser implementation to parse decision tables.
 
 > **new ParserDecision**(`opts`): [`ParserDecision`](ParserDecision.md)
 
-Defined in: parser/ParserBase.ts:47
+Defined in: [parser/ParserBase.ts:47](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L47)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ ParserBaseOptions
 
 > **endKey**: `string`
 
-Defined in: parser/ParserBase.ts:39
+Defined in: [parser/ParserBase.ts:39](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L39)
 
 The key string used to find the last column or row.
 
@@ -62,7 +62,7 @@ The key string used to find the last column or row.
 
 > **fieldNameSequence**: `number` = `0`
 
-Defined in: parser/ParserDecision.ts:48
+Defined in: [parser/ParserDecision.ts:51](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L51)
 
 This sequence is used to give each field a unique name.
 
@@ -72,7 +72,7 @@ This sequence is used to give each field a unique name.
 
 > **logger**: `LoggerInterface`
 
-Defined in: parser/ParserBase.ts:42
+Defined in: [parser/ParserBase.ts:42](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L42)
 
 The logger used for this parser
 
@@ -86,7 +86,7 @@ The logger used for this parser
 
 > **sectionHandler**: `Record`\<`string`, `SectionHandler`\>
 
-Defined in: parser/ParserDecision.ts:50
+Defined in: [parser/ParserDecision.ts:53](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L53)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: parser/ParserDecision.ts:50
 
 > **startColumn**: `number`
 
-Defined in: parser/ParserBase.ts:36
+Defined in: [parser/ParserBase.ts:36](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L36)
 
 The column the parser will start reading.
 
@@ -108,7 +108,7 @@ The column the parser will start reading.
 
 > **startRow**: `number`
 
-Defined in: parser/ParserBase.ts:33
+Defined in: [parser/ParserBase.ts:33](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L33)
 
 The row the parser will start reading.
 
@@ -122,7 +122,7 @@ The row the parser will start reading.
 
 > **getEndColumn**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:120
+Defined in: [parser/ParserBase.ts:120](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L120)
 
 Parses the sheet to get the last column of the decision table.
 
@@ -162,7 +162,7 @@ The maximum of empty columns which will be ignored
 
 > **getEndRow**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:78
+Defined in: [parser/ParserBase.ts:78](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L78)
 
 Parses the sheet to get the last row of the imported table.
 
@@ -202,7 +202,7 @@ The index number of the last row of the table
 
 > **getFieldName**(): `string`
 
-Defined in: parser/ParserDecision.ts:163
+Defined in: [parser/ParserDecision.ts:166](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L166)
 
 Creates a unique field name.
 
@@ -218,7 +218,7 @@ the new generated fieldName
 
 > **getNextSection**(`request`): `NextSectionResult`
 
-Defined in: parser/ParserDecision.ts:709
+Defined in: [parser/ParserDecision.ts:712](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L712)
 
 Get the definition of the next section
 
@@ -264,7 +264,7 @@ The created table model for the sheet
 
 > **getNextSubSection**(`request`): `NextSubSectionResult`
 
-Defined in: parser/ParserDecision.ts:636
+Defined in: [parser/ParserDecision.ts:639](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L639)
 
 Get the definition of the next sub section
 
@@ -310,7 +310,7 @@ A definition/boundaries of this subSection { startRow, endRow, fieldName }
 
 > **handleExecuteSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:487
+Defined in: [parser/ParserDecision.ts:490](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L490)
 
 Adds a new ExecuteSection to the table. Updates the data for all the testcases
 
@@ -336,7 +336,7 @@ SectionHandlerOptions
 
 > **handleFieldSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:528
+Defined in: [parser/ParserDecision.ts:531](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L531)
 
 Adds a new FieldSection to the table. Updates the data for all the testcases
 
@@ -362,7 +362,7 @@ SectionHandlerOptions
 
 > **handleFilterSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:389
+Defined in: [parser/ParserDecision.ts:392](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L392)
 
 Adds a new TagSection to the table. Updates the data for all the test cases
 
@@ -388,7 +388,7 @@ SectionHandlerOptions
 
 > **handleGeneratorSwitchSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:432
+Defined in: [parser/ParserDecision.ts:435](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L435)
 
 Adds a new GeneratorSwitch to the table. Updates the data for all the test cases
 
@@ -414,7 +414,7 @@ SectionHandlerOptions
 
 > **handleMultiplicitySection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:471
+Defined in: [parser/ParserDecision.ts:474](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L474)
 
 Adds a new SummarySection to the table. Updates the data for all the testcases
 
@@ -440,7 +440,7 @@ SectionHandlerOptions
 
 > **handleMultiRowSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:318
+Defined in: [parser/ParserDecision.ts:321](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L321)
 
 Adds a new MultiRowSection to the table. Updates the data for all the testcases
 
@@ -466,7 +466,7 @@ SectionHandlerOptions
 
 > **handleNeverExecuteSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:503
+Defined in: [parser/ParserDecision.ts:506](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L506)
 
 Adds a new NeverExecuteSection to the table. Updates the data for all the testcases
 
@@ -492,7 +492,7 @@ SectionHandlerOptions
 
 > **handleSummarySection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:519
+Defined in: [parser/ParserDecision.ts:522](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L522)
 
 Adds a new SummarySection to the table. Updates the data for all the testcases
 
@@ -518,7 +518,7 @@ SectionHandlerOptions
 
 > **handleTagSection**(`opts`): `void`
 
-Defined in: parser/ParserDecision.ts:354
+Defined in: [parser/ParserDecision.ts:357](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L357)
 
 Adds a new TagSection to the table. Updates the data for all the test cases
 
@@ -544,7 +544,7 @@ SectionHandlerOptions
 
 > **parse**(`request`): `undefined` \| `TableInterface`
 
-Defined in: parser/ParserDecision.ts:68
+Defined in: [parser/ParserDecision.ts:71](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L71)
 
 Parses the sheet with the given name und uses the given importer to access
 the data.
@@ -581,7 +581,7 @@ ParserParseRequest
 
 > **parseForTestcases**(`request`): `number`
 
-Defined in: parser/ParserDecision.ts:175
+Defined in: [parser/ParserDecision.ts:178](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserDecision.ts#L178)
 
 Reads the first line until no testcase name found. This
 column is the last column which will be read. By the way create emtpy testcases

@@ -1,8 +1,8 @@
-[**@tlink/file-processor**](README.md)
+[**@xhubiotable/file-processor**](README.md)
 
 ***
 
-# @tlink/file-processor
+# @xhubiotable/file-processor
 
 ## Classes
 

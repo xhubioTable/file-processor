@@ -1,9 +1,9 @@
 import path from 'node:path'
 
-import { getLoggerMemory, LoggerInterface } from '@tlink/logger'
+import { getLoggerMemory, LoggerInterface } from '@xhubiotable/logger'
 import { ParserInterface } from './parser/ParserInterface'
-import { TableInterface } from '@tlink/model'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { TableInterface } from '@xhubiotable/model'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 
 // The key used to identify the end column and end row
 export const TABLE_END_KEY = '<END>'

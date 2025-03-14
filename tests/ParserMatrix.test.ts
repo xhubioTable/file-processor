@@ -1,8 +1,8 @@
 import path from 'node:path'
 
-import { ImporterXlsx } from '@tlink/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import { ParserMatrix } from '../src/index'
-import { LoggerMemory } from '@tlink/logger'
+import { LoggerMemory } from '@xhubiotable/logger'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
 const filename = path.join(fixturesDir, 'matrix/action_on_person.xls')

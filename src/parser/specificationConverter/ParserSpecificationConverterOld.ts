@@ -1,10 +1,10 @@
-// import { FieldSectionDefinition, TableDecision } from '@tlink/model-decision'
+// import { FieldSectionDefinition, TableDecision } from '@xhubiotable/model-decision'
 // import {
 //   SpecificationFieldInterface,
 //   SpecificationFieldRuleInterface,
 //   SpecificationInterface
 // } from '../SecificationInterface'
-// import { LoggerInterface } from '@tlink/logger'
+// import { LoggerInterface } from '@xhubiotable/logger'
 // import { SpecificationModel } from '../ParserSpecification'
 
 // /**

@@ -1,5 +1,8 @@
-import { MultiRowSectionDefinition, TableDecision } from '@tlink/model-decision'
-import { SectionType } from '@tlink/model-decision'
+import {
+  MultiRowSectionDefinition,
+  TableDecision
+} from '@xhubiotable/model-decision'
+import { SectionType } from '@xhubiotable/model-decision'
 
 import { ParserBase } from './ParserBase'
 import {
@@ -14,8 +17,8 @@ import {
   COLUMN_MURO_COMMENT
 } from '../constants/ParserDecisionConstants'
 import { START_ROW, START_COLUMN } from '../constants/ParserBaseConstants'
-import { TableInterface } from '@tlink/model'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { TableInterface } from '@xhubiotable/model'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 import { ParserParseRequest } from './ParserInterface'
 
 interface SectionHandlerOptions {

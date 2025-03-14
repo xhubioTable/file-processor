@@ -1,7 +1,7 @@
 import path from 'node:path'
-import { ImporterXlsx } from '@tlink/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import { FileProcessor, ParserDecision } from '../src/index'
-import { getLoggerMemory } from '@tlink/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 const FIXTURES = path.join(__dirname, 'fixtures')
 

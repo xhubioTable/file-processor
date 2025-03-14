@@ -1,13 +1,13 @@
 import path from 'node:path'
 
-import { ImporterXlsx } from '@tlink/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import { ParserDecision } from '../src/index'
-import { getLoggerMemory, LoggerMemory } from '@tlink/logger'
+import { getLoggerMemory, LoggerMemory } from '@xhubiotable/logger'
 import {
   FieldSectionDefinition,
   TableDecision,
   TableDecisionInterface
-} from '@tlink/model-decision'
+} from '@xhubiotable/model-decision'
 
 const fixturesDir = path.join(__dirname, 'fixtures')
 const dataFile = path.join(fixturesDir, 'decision/decision_table.xls')

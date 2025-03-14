@@ -1,12 +1,12 @@
-[**@tlink/file-processor**](../README.md)
+[**@xhubiotable/file-processor**](../README.md)
 
 ***
 
-[@tlink/file-processor](../globals.md) / ParserSpecification
+[@xhubiotable/file-processor](../globals.md) / ParserSpecification
 
 # Class: ParserSpecification
 
-Defined in: parser/ParserSpecification.ts:23
+Defined in: [parser/ParserSpecification.ts:23](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L23)
 
 The parser implementation to parse specification tables.
 
@@ -20,7 +20,7 @@ The parser implementation to parse specification tables.
 
 > **new ParserSpecification**(`opts`): [`ParserSpecification`](ParserSpecification.md)
 
-Defined in: parser/ParserBase.ts:47
+Defined in: [parser/ParserBase.ts:47](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L47)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ ParserBaseOptions
 
 > **endKey**: `string`
 
-Defined in: parser/ParserBase.ts:39
+Defined in: [parser/ParserBase.ts:39](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L39)
 
 The key string used to find the last column or row.
 
@@ -62,7 +62,7 @@ The key string used to find the last column or row.
 
 > **hasParseErrors**: `boolean` = `false`
 
-Defined in: parser/ParserSpecification.ts:24
+Defined in: [parser/ParserSpecification.ts:24](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L24)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: parser/ParserSpecification.ts:24
 
 > **logger**: `LoggerInterface`
 
-Defined in: parser/ParserBase.ts:42
+Defined in: [parser/ParserBase.ts:42](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L42)
 
 The logger used for this parser
 
@@ -84,7 +84,7 @@ The logger used for this parser
 
 > **startColumn**: `number`
 
-Defined in: parser/ParserBase.ts:36
+Defined in: [parser/ParserBase.ts:36](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L36)
 
 The column the parser will start reading.
 
@@ -98,7 +98,7 @@ The column the parser will start reading.
 
 > **startRow**: `number`
 
-Defined in: parser/ParserBase.ts:33
+Defined in: [parser/ParserBase.ts:33](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L33)
 
 The row the parser will start reading.
 
@@ -112,7 +112,7 @@ The row the parser will start reading.
 
 > **checkForUnusedRules**(`request`): `void`
 
-Defined in: parser/ParserSpecification.ts:480
+Defined in: [parser/ParserSpecification.ts:480](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L480)
 
 Each rule defined must be used. Unused rules should be deleted from the table
 
@@ -162,7 +162,7 @@ The name of the sheet
 
 > **checkSheetRows**(`sheetName`, `importer`, `sheetEndRow`): `object`
 
-Defined in: parser/ParserSpecification.ts:550
+Defined in: [parser/ParserSpecification.ts:550](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L550)
 
 Checks that the specification contains all the needed sections
 
@@ -206,7 +206,7 @@ An Object with the following properties {severityStartRow, ruleStartRow}
 
 > **getEndColumn**(`importer`, `sheetName`): `number`
 
-Defined in: parser/ParserSpecification.ts:598
+Defined in: [parser/ParserSpecification.ts:598](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L598)
 
 Parses the sheet to get the last row of the table.
 
@@ -240,7 +240,7 @@ The last row of the table
 
 > **getEndRow**(`importer`, `sheetName`, `maxEmpty`): `number`
 
-Defined in: parser/ParserBase.ts:78
+Defined in: [parser/ParserBase.ts:78](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserBase.ts#L78)
 
 Parses the sheet to get the last row of the imported table.
 
@@ -280,7 +280,7 @@ The index number of the last row of the table
 
 > **parse**(`request`): `undefined` \| `TableInterface`
 
-Defined in: parser/ParserSpecification.ts:32
+Defined in: [parser/ParserSpecification.ts:32](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L32)
 
 Parses the sheet with the given name und uses the given importer to access
 the data.
@@ -317,7 +317,7 @@ ParserParseRequest
 
 > **parseFields**(`request`): `object`
 
-Defined in: parser/ParserSpecification.ts:144
+Defined in: [parser/ParserSpecification.ts:144](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L144)
 
 Parses the fields out of the Spreadsheet. This is the section where
 the fields of the interface are defined
@@ -378,7 +378,7 @@ An object with the fields and the fieldOrder
 
 > **parseRules**(`request`): `Record`\<`string`, `SpecificationRuleInterface`\>
 
-Defined in: parser/ParserSpecification.ts:303
+Defined in: [parser/ParserSpecification.ts:303](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L303)
 
 Load the rules defined in the rule section
 
@@ -424,7 +424,7 @@ An object with the rules
 
 > **parseSeverities**(`request`): `Set`\<`string`\>
 
-Defined in: parser/ParserSpecification.ts:397
+Defined in: [parser/ParserSpecification.ts:397](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L397)
 
 Load the rules defined in the rule section
 
@@ -476,7 +476,7 @@ A set of the existing severities
 
 > **parseSpecification**(`sheetName`, `importer`): `undefined` \| `SpecificationModel`
 
-Defined in: parser/ParserSpecification.ts:71
+Defined in: [parser/ParserSpecification.ts:71](https://github.com/xhubioTable/file-processor/blob/2976a44538615081e1254047688a86b993a0ae7f/src/parser/ParserSpecification.ts#L71)
 
 Parses a single Spreadsheet
 

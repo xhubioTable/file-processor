@@ -1,5 +1,5 @@
-import { LoggerInterface } from '@tlink/logger'
-import { TableInterface } from '@tlink/model'
+import { LoggerInterface } from '@xhubiotable/logger'
+import { TableInterface } from '@xhubiotable/model'
 
 import {
   START_ROW,
@@ -8,7 +8,7 @@ import {
   MAX_EMPTY_LINES
 } from '../constants/ParserBaseConstants'
 import { ParserInterface, ParserParseRequest } from './ParserInterface'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 
 export interface ParserBaseOptions {
   /** The row the parser will start reading. */

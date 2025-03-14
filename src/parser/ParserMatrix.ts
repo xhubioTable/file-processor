@@ -1,6 +1,6 @@
 import { ParserBase } from './ParserBase'
 
-import { MetaRowColumn, TableMatrix } from '@tlink/model-matrix'
+import { MetaRowColumn, TableMatrix } from '@xhubiotable/model-matrix'
 
 import {
   START_COLUMN_DATA,
@@ -20,8 +20,8 @@ import {
 } from '../constants/ParserMatrixConstants'
 
 import { START_ROW, START_COLUMN } from '../constants/ParserBaseConstants'
-import { TableInterface } from '@tlink/model'
-import { ImporterInterface } from '@tlink/importer-xlsx'
+import { TableInterface } from '@xhubiotable/model'
+import { ImporterInterface } from '@xhubiotable/importer-xlsx'
 import { ParserParseRequest } from './ParserInterface'
 
 const META_ROWS: Record<string, number> = {
