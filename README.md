@@ -1,71 +1,16 @@
-**@xhubiotable/file-processor**
+# ⚠️ DEPRECATED
 
-***
+This package has been deprecated.
 
-# file-processor
+All `@xhubiotable/*` packages have been consolidated into a single package:
 
-The file processor works on the data imported by an importer to create a
-table model. For the file processor, it is transparent which importer
-was used. The importer must implement the importer interface.
+## **[@xhubio/nanook-table](https://www.npmjs.com/package/@xhubio/nanook-table)**
 
-## ImporterInterface
+Please update your dependencies:
 
-The importer is responsible for loading data from a spreadsheet. This
-interface must be implemented to use the custom importer. The Importer
-is used by a parser to read the files and create the table model. The
-importer does not care about the content of the spreadsheet - it’s just
-an abstract spreadsheet reader.
+```bash
+npm uninstall @xhubiotable/file-processor
+npm install @xhubio/nanook-table
+```
 
-### Functions
-
-    /**
-     * Opens a file and loads it. This could be spreadsheet or whatever
-     * file.
-     * @param fileName {string} The file to open
-     */
-    async loadFile(fileName) {}
-
-    /**
-     * Returns all the loaded sheet names
-     * @return sheets {array} A list of sheet names
-     */
-    sheetNames() {}
-
-    /**
-     * Returns the Cell value from the sheet with the given name
-     * @param sheetName {string} The name of the sheet
-     * @param column {number} The column number start with '0'
-     * @param row {number} The row number start with '0'
-     * @return value {string} The Cell value
-     */
-    cellValue(sheetName, column, row) {}
-
-    /**
-     * Deletes all the loaded data in the importer
-     */
-    clear() {}
-
-## ParserInterface
-
-For each table type a specific parser is needed. All the Parser must
-implement this interface.
-
-### Functions
-
-    /**
-     * Parser the sheet with the given name
-     * @param sheetName {string} The name of the sheet
-     * @param importer {object} The importer
-     * @return tableModel {object} The created table model
-     */
-    async parse(sheetName, importer) {}
-
-This module provides the following parsers  
--   ParserDecision  
-    Parses decision tables.
-
--   ParserMatrix  
-    Parses matrix tables.
-
--   ParserSpecification  
-    Parses specification tables and returns decisionTable models.
+For migration details, see the [nanook-table documentation](https://github.com/xhubio/nanook-table).
